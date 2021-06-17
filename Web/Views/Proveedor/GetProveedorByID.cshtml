@@ -1,0 +1,95 @@
+﻿@model Infraestructure.Models.Proveedor
+
+@{
+    ViewBag.Title = "Proveedor por ID";
+}
+
+<div>
+    <h4>Proveedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "GetProveedores")
+</p>
+<section class="bg-light py-5" style="margin-top:10%">
+    <center>
+        <h3 class="h3">Agentes por Proveedor</h3>
+        <br />
+        <table class="table table-hover" style="width:100%">
+            <tr class="table-light">
+                <th scope="col" class="text-center">
+                    Código Agente
+                </th>
+                <th scope="col" class="text-center">
+                   Nombre
+                </th>
+                <th scope="col" class="text-center">
+                   Telefono
+                </th>
+                <th scope="col" class="text-center">
+                    Correo
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Agente)
+            {
+        <tr class="table-light">
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td class="text-center">
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+        </tr>
+            }
+
+        </table>
+    </center>
+</section>

@@ -1,0 +1,95 @@
+﻿@model Infraestructure.Models.Calzado
+
+@{
+    ViewBag.Title = "GetCalzadosByID";
+}
+
+
+<div>
+    <h4>Calzado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMarca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMarca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdGenero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdGenero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTalla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTalla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioProv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioProv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "GetCalzados")
+</p>

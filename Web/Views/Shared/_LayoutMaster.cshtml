@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - S&L Store</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Logout.css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="icon" href="~/Images/S&L Icono.png" type="image/png" sizes="228×228">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">S&L Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto" style="color:white">
+                <li class="nav-item" style="margin-top:7px">
+                    @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Calzado</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Registrar</a>
+                        <a class="dropdown-item" href="#">Consultar</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Movimientos</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Entradas</a>
+                        <a class="dropdown-item" href="#">Salidas</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Proveedores</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Registrar</a>
+                        <a class="dropdown-item" href="#">Consultar</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Planilla</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Agregar</a>
+                        <a class="dropdown-item" href="#">Consultar</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sucursal</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Atenas</a>
+                        <a class="dropdown-item" href="#">Naranjo</a>
+                    </div>
+                </li>
+                <li class="nav-item" style="margin-top:8px;margin-left:8px">
+                    <a class="blanco" href="#">Reportes</a>
+                </li>
+                <li class="nav-item" style="margin-top:8px;margin-left:12px">
+                    @Html.ActionLink("Acerca", "About", "Home", null, new { @class = "nav-link" })
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a style="color:white;">Usuario</a>
+
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                <div class="logout">
+                    <i class="fa fa-sign-out" aria-hidden="true" style="color: white;font-size: 20px"></i>
+                </div>
+                
+
+            </form>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+    @RenderSection("footer",false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

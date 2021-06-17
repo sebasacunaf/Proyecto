@@ -1,0 +1,1002 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="INVENTARIOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calzado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="NombreMarca" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdGenero" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTalla" Type="int" />
+          <Property Name="PrecioProv" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="PrecioVent" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="CantMin" Type="int" />
+          <Property Name="CantMax" Type="int" />
+          <Property Name="CantTotal" Type="int" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CalzadoxProveedor">
+          <Key>
+            <PropertyRef Name="IdCalzado" />
+            <PropertyRef Name="IdProveedor" />
+          </Key>
+          <Property Name="IdCalzado" Type="int" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalzadoxSucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+            <PropertyRef Name="IdCalzado" />
+          </Key>
+          <Property Name="IdSucursal" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdCalzado" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DetalleMovimiento">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdTipo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdDetalle" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="IdTipoMovimiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdDetalleMovimiento" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdSucursal" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdProveedor" Type="int" />
+          <Property Name="Fecha" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GestionDetalle">
+          <Key>
+            <PropertyRef Name="IdGestion" />
+            <PropertyRef Name="IdCalzado" />
+          </Key>
+          <Property Name="IdGestion" Type="int" Nullable="false" />
+          <Property Name="IdCalzado" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Pais" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tallas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Talla" Type="money" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoGenero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMarca">
+          <Key>
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoMovimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdTipo" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Contrasenna" Type="nvarchar" MaxLength="50" />
+          <Property Name="Estado" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Agente__IdProvee__286302EC">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Agente" Type="Self.Agente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agente">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__IdGener__3A81B327">
+          <End Role="TipoGenero" Type="Self.TipoGenero" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGenero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="IdGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__IdTalla__3B75D760">
+          <End Role="Tallas" Type="Self.Tallas" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tallas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="IdTalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__NombreM__398D8EEE">
+          <End Role="TipoMarca" Type="Self.TipoMarca" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMarca">
+              <PropertyRef Name="Nombre" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="NombreMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxP__IdCal__3D5E1FD2">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="1" />
+          <End Role="CalzadoxProveedor" Type="Self.CalzadoxProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calzado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxProveedor">
+              <PropertyRef Name="IdCalzado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxP__IdPro__3C69FB99">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="1" />
+          <End Role="CalzadoxProveedor" Type="Self.CalzadoxProveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxProveedor">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxS__IdCal__3F466844">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="1" />
+          <End Role="CalzadoxSucursal" Type="Self.CalzadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calzado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxSucursal">
+              <PropertyRef Name="IdCalzado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxS__IdSuc__3E52440B">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="CalzadoxSucursal" Type="Self.CalzadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleMo__IdTip__440B1D61">
+          <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="1" />
+          <End Role="DetalleMovimiento" Type="Self.DetalleMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleMovimiento">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__47DBAE45">
+          <End Role="DetalleMovimiento" Type="Self.DetalleMovimiento" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetalleMovimiento">
+              <PropertyRef Name="IdTipo" />
+              <PropertyRef Name="IdDetalle" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdTipoMovimiento" />
+              <PropertyRef Name="IdDetalleMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdProve__49C3F6B7">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdSucur__48CFD27E">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdUsuar__46E78A0C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GestionDe__IdCal__4D94879B">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="1" />
+          <End Role="GestionDetalle" Type="Self.GestionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calzado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GestionDetalle">
+              <PropertyRef Name="IdCalzado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GestionDe__IdGes__4CA06362">
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="1" />
+          <End Role="GestionDetalle" Type="Self.GestionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GestionDetalle">
+              <PropertyRef Name="IdGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdTipo__2D27B809">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="INVENTARIOModelStoreContainer">
+          <EntitySet Name="Agente" EntityType="Self.Agente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Calzado" EntityType="Self.Calzado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalzadoxProveedor" EntityType="Self.CalzadoxProveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalzadoxSucursal" EntityType="Self.CalzadoxSucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DetalleMovimiento" EntityType="Self.DetalleMovimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gestion" EntityType="Self.Gestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GestionDetalle" EntityType="Self.GestionDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tallas" EntityType="Self.Tallas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoGenero" EntityType="Self.TipoGenero" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMarca" EntityType="Self.TipoMarca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Agente__IdProvee__286302EC" Association="Self.FK__Agente__IdProvee__286302EC">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Agente" EntitySet="Agente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__IdGener__3A81B327" Association="Self.FK__Calzado__IdGener__3A81B327">
+            <End Role="TipoGenero" EntitySet="TipoGenero" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__IdTalla__3B75D760" Association="Self.FK__Calzado__IdTalla__3B75D760">
+            <End Role="Tallas" EntitySet="Tallas" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__NombreM__398D8EEE" Association="Self.FK__Calzado__NombreM__398D8EEE">
+            <End Role="TipoMarca" EntitySet="TipoMarca" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxP__IdCal__3D5E1FD2" Association="Self.FK__CalzadoxP__IdCal__3D5E1FD2">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="CalzadoxProveedor" EntitySet="CalzadoxProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxP__IdPro__3C69FB99" Association="Self.FK__CalzadoxP__IdPro__3C69FB99">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="CalzadoxProveedor" EntitySet="CalzadoxProveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxS__IdCal__3F466844" Association="Self.FK__CalzadoxS__IdCal__3F466844">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="CalzadoxSucursal" EntitySet="CalzadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxS__IdSuc__3E52440B" Association="Self.FK__CalzadoxS__IdSuc__3E52440B">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="CalzadoxSucursal" EntitySet="CalzadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleMo__IdTip__440B1D61" Association="Self.FK__DetalleMo__IdTip__440B1D61">
+            <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
+            <End Role="DetalleMovimiento" EntitySet="DetalleMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__47DBAE45" Association="Self.FK__Gestion__47DBAE45">
+            <End Role="DetalleMovimiento" EntitySet="DetalleMovimiento" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdProve__49C3F6B7" Association="Self.FK__Gestion__IdProve__49C3F6B7">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdSucur__48CFD27E" Association="Self.FK__Gestion__IdSucur__48CFD27E">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdUsuar__46E78A0C" Association="Self.FK__Gestion__IdUsuar__46E78A0C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GestionDe__IdCal__4D94879B" Association="Self.FK__GestionDe__IdCal__4D94879B">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="GestionDetalle" EntitySet="GestionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GestionDe__IdGes__4CA06362" Association="Self.FK__GestionDe__IdGes__4CA06362">
+            <End Role="Gestion" EntitySet="Gestion" />
+            <End Role="GestionDetalle" EntitySet="GestionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdTipo__2D27B809" Association="Self.FK__Usuario__IdTipo__2D27B809">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="INVENTARIOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Agente__IdProvee__286302EC" FromRole="Agente" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="Calzado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="NombreMarca" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdGenero" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdTalla" Type="Int32" />
+          <Property Name="PrecioProv" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="PrecioVent" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="CantMin" Type="Int32" />
+          <Property Name="CantMax" Type="Int32" />
+          <Property Name="CantTotal" Type="Int32" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TipoGenero" Relationship="Self.FK__Calzado__IdGener__3A81B327" FromRole="Calzado" ToRole="TipoGenero" />
+          <NavigationProperty Name="Tallas" Relationship="Self.FK__Calzado__IdTalla__3B75D760" FromRole="Calzado" ToRole="Tallas" />
+          <NavigationProperty Name="TipoMarca" Relationship="Self.FK__Calzado__NombreM__398D8EEE" FromRole="Calzado" ToRole="TipoMarca" />
+          <NavigationProperty Name="CalzadoxSucursal" Relationship="Self.FK__CalzadoxS__IdCal__3F466844" FromRole="Calzado" ToRole="CalzadoxSucursal" />
+          <NavigationProperty Name="GestionDetalle" Relationship="Self.FK__GestionDe__IdCal__4D94879B" FromRole="Calzado" ToRole="GestionDetalle" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.CalzadoxProveedor" FromRole="Calzado" ToRole="Proveedor" />
+        </EntityType>
+        <EntityType Name="CalzadoxSucursal">
+          <Key>
+            <PropertyRef Name="IdSucursal" />
+            <PropertyRef Name="IdCalzado" />
+          </Key>
+          <Property Name="IdSucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdCalzado" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calzado" Relationship="Self.FK__CalzadoxS__IdCal__3F466844" FromRole="CalzadoxSucursal" ToRole="Calzado" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__CalzadoxS__IdSuc__3E52440B" FromRole="CalzadoxSucursal" ToRole="Sucursal" />
+        </EntityType>
+        <EntityType Name="DetalleMovimiento">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+            <PropertyRef Name="IdDetalle" />
+          </Key>
+          <Property Name="IdTipo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdDetalle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="TipoMovimiento" Relationship="Self.FK__DetalleMo__IdTip__440B1D61" FromRole="DetalleMovimiento" ToRole="TipoMovimiento" />
+          <NavigationProperty Name="Gestion" Relationship="Self.FK__Gestion__47DBAE45" FromRole="DetalleMovimiento" ToRole="Gestion" />
+        </EntityType>
+        <EntityType Name="Gestion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="IdTipoMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdDetalleMovimiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdSucursal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdProveedor" Type="Int32" />
+          <Property Name="Fecha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DetalleMovimiento" Relationship="Self.FK__Gestion__47DBAE45" FromRole="Gestion" ToRole="DetalleMovimiento" />
+          <NavigationProperty Name="Proveedor" Relationship="Self.FK__Gestion__IdProve__49C3F6B7" FromRole="Gestion" ToRole="Proveedor" />
+          <NavigationProperty Name="Sucursal" Relationship="Self.FK__Gestion__IdSucur__48CFD27E" FromRole="Gestion" ToRole="Sucursal" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Gestion__IdUsuar__46E78A0C" FromRole="Gestion" ToRole="Usuario" />
+          <NavigationProperty Name="GestionDetalle" Relationship="Self.FK__GestionDe__IdGes__4CA06362" FromRole="Gestion" ToRole="GestionDetalle" />
+        </EntityType>
+        <EntityType Name="GestionDetalle">
+          <Key>
+            <PropertyRef Name="IdGestion" />
+            <PropertyRef Name="IdCalzado" />
+          </Key>
+          <Property Name="IdGestion" Type="Int32" Nullable="false" />
+          <Property Name="IdCalzado" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calzado" Relationship="Self.FK__GestionDe__IdCal__4D94879B" FromRole="GestionDetalle" ToRole="Calzado" />
+          <NavigationProperty Name="Gestion" Relationship="Self.FK__GestionDe__IdGes__4CA06362" FromRole="GestionDetalle" ToRole="Gestion" />
+        </EntityType>
+        <EntityType Name="Proveedor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Pais" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Agente" Relationship="Self.FK__Agente__IdProvee__286302EC" FromRole="Proveedor" ToRole="Agente" />
+          <NavigationProperty Name="Gestion" Relationship="Self.FK__Gestion__IdProve__49C3F6B7" FromRole="Proveedor" ToRole="Gestion" />
+          <NavigationProperty Name="Calzado" Relationship="Self.CalzadoxProveedor" FromRole="Proveedor" ToRole="Calzado" />
+        </EntityType>
+        <EntityType Name="Sucursal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CalzadoxSucursal" Relationship="Self.FK__CalzadoxS__IdSuc__3E52440B" FromRole="Sucursal" ToRole="CalzadoxSucursal" />
+          <NavigationProperty Name="Gestion" Relationship="Self.FK__Gestion__IdSucur__48CFD27E" FromRole="Sucursal" ToRole="Gestion" />
+        </EntityType>
+        <EntityType Name="Tallas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Talla" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Calzado" Relationship="Self.FK__Calzado__IdTalla__3B75D760" FromRole="Tallas" ToRole="Calzado" />
+        </EntityType>
+        <EntityType Name="TipoGenero">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Calzado" Relationship="Self.FK__Calzado__IdGener__3A81B327" FromRole="TipoGenero" ToRole="Calzado" />
+        </EntityType>
+        <EntityType Name="TipoMarca">
+          <Key>
+            <PropertyRef Name="Nombre" />
+          </Key>
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Calzado" Relationship="Self.FK__Calzado__NombreM__398D8EEE" FromRole="TipoMarca" ToRole="Calzado" />
+        </EntityType>
+        <EntityType Name="TipoMovimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="DetalleMovimiento" Relationship="Self.FK__DetalleMo__IdTip__440B1D61" FromRole="TipoMovimiento" ToRole="DetalleMovimiento" />
+        </EntityType>
+        <EntityType Name="TipoUsuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__IdTipo__2D27B809" FromRole="TipoUsuario" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Contrasenna" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gestion" Relationship="Self.FK__Gestion__IdUsuar__46E78A0C" FromRole="Usuario" ToRole="Gestion" />
+          <NavigationProperty Name="TipoUsuario" Relationship="Self.FK__Usuario__IdTipo__2D27B809" FromRole="Usuario" ToRole="TipoUsuario" />
+        </EntityType>
+        <Association Name="FK__Agente__IdProvee__286302EC">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Agente" Type="Self.Agente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agente">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__IdGener__3A81B327">
+          <End Role="TipoGenero" Type="Self.TipoGenero" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoGenero">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="IdGenero" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__IdTalla__3B75D760">
+          <End Role="Tallas" Type="Self.Tallas" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tallas">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="IdTalla" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Calzado__NombreM__398D8EEE">
+          <End Role="TipoMarca" Type="Self.TipoMarca" Multiplicity="0..1" />
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMarca">
+              <PropertyRef Name="Nombre" />
+            </Principal>
+            <Dependent Role="Calzado">
+              <PropertyRef Name="NombreMarca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxS__IdCal__3F466844">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="1" />
+          <End Role="CalzadoxSucursal" Type="Self.CalzadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calzado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxSucursal">
+              <PropertyRef Name="IdCalzado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GestionDe__IdCal__4D94879B">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="1" />
+          <End Role="GestionDetalle" Type="Self.GestionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calzado">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GestionDetalle">
+              <PropertyRef Name="IdCalzado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CalzadoxS__IdSuc__3E52440B">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="CalzadoxSucursal" Type="Self.CalzadoxSucursal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalzadoxSucursal">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DetalleMo__IdTip__440B1D61">
+          <End Role="TipoMovimiento" Type="Self.TipoMovimiento" Multiplicity="1" />
+          <End Role="DetalleMovimiento" Type="Self.DetalleMovimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoMovimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetalleMovimiento">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__47DBAE45">
+          <End Role="DetalleMovimiento" Type="Self.DetalleMovimiento" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DetalleMovimiento">
+              <PropertyRef Name="IdTipo" />
+              <PropertyRef Name="IdDetalle" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdTipoMovimiento" />
+              <PropertyRef Name="IdDetalleMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdProve__49C3F6B7">
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="0..1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdProveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdSucur__48CFD27E">
+          <End Role="Sucursal" Type="Self.Sucursal" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sucursal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdSucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Gestion__IdUsuar__46E78A0C">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gestion">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GestionDe__IdGes__4CA06362">
+          <End Role="Gestion" Type="Self.Gestion" Multiplicity="1" />
+          <End Role="GestionDetalle" Type="Self.GestionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gestion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GestionDetalle">
+              <PropertyRef Name="IdGestion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Usuario__IdTipo__2D27B809">
+          <End Role="TipoUsuario" Type="Self.TipoUsuario" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoUsuario">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="IdTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CalzadoxProveedor">
+          <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
+          <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="INVENTARIOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agente" EntityType="Self.Agente" />
+          <EntitySet Name="Calzado" EntityType="Self.Calzado" />
+          <EntitySet Name="CalzadoxSucursal" EntityType="Self.CalzadoxSucursal" />
+          <EntitySet Name="DetalleMovimiento" EntityType="Self.DetalleMovimiento" />
+          <EntitySet Name="Gestion" EntityType="Self.Gestion" />
+          <EntitySet Name="GestionDetalle" EntityType="Self.GestionDetalle" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Sucursal" EntityType="Self.Sucursal" />
+          <EntitySet Name="Tallas" EntityType="Self.Tallas" />
+          <EntitySet Name="TipoGenero" EntityType="Self.TipoGenero" />
+          <EntitySet Name="TipoMarca" EntityType="Self.TipoMarca" />
+          <EntitySet Name="TipoMovimiento" EntityType="Self.TipoMovimiento" />
+          <EntitySet Name="TipoUsuario" EntityType="Self.TipoUsuario" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK__Agente__IdProvee__286302EC" Association="Self.FK__Agente__IdProvee__286302EC">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Agente" EntitySet="Agente" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__IdGener__3A81B327" Association="Self.FK__Calzado__IdGener__3A81B327">
+            <End Role="TipoGenero" EntitySet="TipoGenero" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__IdTalla__3B75D760" Association="Self.FK__Calzado__IdTalla__3B75D760">
+            <End Role="Tallas" EntitySet="Tallas" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Calzado__NombreM__398D8EEE" Association="Self.FK__Calzado__NombreM__398D8EEE">
+            <End Role="TipoMarca" EntitySet="TipoMarca" />
+            <End Role="Calzado" EntitySet="Calzado" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxS__IdCal__3F466844" Association="Self.FK__CalzadoxS__IdCal__3F466844">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="CalzadoxSucursal" EntitySet="CalzadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GestionDe__IdCal__4D94879B" Association="Self.FK__GestionDe__IdCal__4D94879B">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="GestionDetalle" EntitySet="GestionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CalzadoxS__IdSuc__3E52440B" Association="Self.FK__CalzadoxS__IdSuc__3E52440B">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="CalzadoxSucursal" EntitySet="CalzadoxSucursal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DetalleMo__IdTip__440B1D61" Association="Self.FK__DetalleMo__IdTip__440B1D61">
+            <End Role="TipoMovimiento" EntitySet="TipoMovimiento" />
+            <End Role="DetalleMovimiento" EntitySet="DetalleMovimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__47DBAE45" Association="Self.FK__Gestion__47DBAE45">
+            <End Role="DetalleMovimiento" EntitySet="DetalleMovimiento" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdProve__49C3F6B7" Association="Self.FK__Gestion__IdProve__49C3F6B7">
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdSucur__48CFD27E" Association="Self.FK__Gestion__IdSucur__48CFD27E">
+            <End Role="Sucursal" EntitySet="Sucursal" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Gestion__IdUsuar__46E78A0C" Association="Self.FK__Gestion__IdUsuar__46E78A0C">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Gestion" EntitySet="Gestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GestionDe__IdGes__4CA06362" Association="Self.FK__GestionDe__IdGes__4CA06362">
+            <End Role="Gestion" EntitySet="Gestion" />
+            <End Role="GestionDetalle" EntitySet="GestionDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Usuario__IdTipo__2D27B809" Association="Self.FK__Usuario__IdTipo__2D27B809">
+            <End Role="TipoUsuario" EntitySet="TipoUsuario" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="CalzadoxProveedor" Association="Self.CalzadoxProveedor">
+            <End Role="Calzado" EntitySet="Calzado" />
+            <End Role="Proveedor" EntitySet="Proveedor" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="INVENTARIOModelStoreContainer" CdmEntityContainer="INVENTARIOEntities">
+          <EntitySetMapping Name="Agente">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Agente">
+              <MappingFragment StoreEntitySet="Agente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calzado">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Calzado">
+              <MappingFragment StoreEntitySet="Calzado">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreMarca" ColumnName="NombreMarca" />
+                <ScalarProperty Name="IdGenero" ColumnName="IdGenero" />
+                <ScalarProperty Name="IdTalla" ColumnName="IdTalla" />
+                <ScalarProperty Name="PrecioProv" ColumnName="PrecioProv" />
+                <ScalarProperty Name="PrecioVent" ColumnName="PrecioVent" />
+                <ScalarProperty Name="CantMin" ColumnName="CantMin" />
+                <ScalarProperty Name="CantMax" ColumnName="CantMax" />
+                <ScalarProperty Name="CantTotal" ColumnName="CantTotal" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CalzadoxSucursal">
+            <EntityTypeMapping TypeName="INVENTARIOModel.CalzadoxSucursal">
+              <MappingFragment StoreEntitySet="CalzadoxSucursal">
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdCalzado" ColumnName="IdCalzado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DetalleMovimiento">
+            <EntityTypeMapping TypeName="INVENTARIOModel.DetalleMovimiento">
+              <MappingFragment StoreEntitySet="DetalleMovimiento">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="IdDetalle" ColumnName="IdDetalle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gestion">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Gestion">
+              <MappingFragment StoreEntitySet="Gestion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="IdTipoMovimiento" ColumnName="IdTipoMovimiento" />
+                <ScalarProperty Name="IdDetalleMovimiento" ColumnName="IdDetalleMovimiento" />
+                <ScalarProperty Name="IdSucursal" ColumnName="IdSucursal" />
+                <ScalarProperty Name="IdProveedor" ColumnName="IdProveedor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GestionDetalle">
+            <EntityTypeMapping TypeName="INVENTARIOModel.GestionDetalle">
+              <MappingFragment StoreEntitySet="GestionDetalle">
+                <ScalarProperty Name="IdGestion" ColumnName="IdGestion" />
+                <ScalarProperty Name="IdCalzado" ColumnName="IdCalzado" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Proveedor">
+              <MappingFragment StoreEntitySet="Proveedor">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sucursal">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Sucursal">
+              <MappingFragment StoreEntitySet="Sucursal">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tallas">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Tallas">
+              <MappingFragment StoreEntitySet="Tallas">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Talla" ColumnName="Talla" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoGenero">
+            <EntityTypeMapping TypeName="INVENTARIOModel.TipoGenero">
+              <MappingFragment StoreEntitySet="TipoGenero">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMarca">
+            <EntityTypeMapping TypeName="INVENTARIOModel.TipoMarca">
+              <MappingFragment StoreEntitySet="TipoMarca">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoMovimiento">
+            <EntityTypeMapping TypeName="INVENTARIOModel.TipoMovimiento">
+              <MappingFragment StoreEntitySet="TipoMovimiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoUsuario">
+            <EntityTypeMapping TypeName="INVENTARIOModel.TipoUsuario">
+              <MappingFragment StoreEntitySet="TipoUsuario">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="INVENTARIOModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CalzadoxProveedor" TypeName="INVENTARIOModel.CalzadoxProveedor" StoreEntitySet="CalzadoxProveedor">
+            <EndProperty Name="Calzado">
+              <ScalarProperty Name="Id" ColumnName="IdCalzado" />
+            </EndProperty>
+            <EndProperty Name="Proveedor">
+              <ScalarProperty Name="Id" ColumnName="IdProveedor" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

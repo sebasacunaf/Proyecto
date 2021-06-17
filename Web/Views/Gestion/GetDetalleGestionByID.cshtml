@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Infraestructure.Models.GestionDetalle>
+
+@{
+    ViewBag.Title = "Detalle de la Gestión";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdGestion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IdCalzado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGestion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCalzado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink("Regresar", "GetGestion")
+</p>

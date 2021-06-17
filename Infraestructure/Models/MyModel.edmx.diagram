@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="512de5384acb46d18e86c91edc09d983" Name="Diagram1">
+        <EntityTypeShape EntityType="INVENTARIOModel.Agente" Width="1.5" PointX="7.5" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Calzado" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.CalzadoxSucursal" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.DetalleMovimiento" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Gestion" Width="1.5" PointX="10.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.GestionDetalle" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Proveedor" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Sucursal" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Tallas" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.TipoGenero" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.TipoMarca" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.TipoMovimiento" Width="1.5" PointX="6" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.TipoUsuario" Width="1.5" PointX="6" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="INVENTARIOModel.Usuario" Width="1.5" PointX="8.25" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Agente__IdProvee__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Calzado__IdGener__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Calzado__IdTalla__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Calzado__NombreM__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__CalzadoxS__IdCal__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__GestionDe__IdCal__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__CalzadoxS__IdSuc__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__DetalleMo__IdTip__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Gestion__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Gestion__IdProve__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Gestion__IdSucur__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Gestion__IdUsuar__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__GestionDe__IdGes__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.FK__Usuario__IdTipo__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="INVENTARIOModel.CalzadoxProveedor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

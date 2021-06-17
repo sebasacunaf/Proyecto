@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Inicio";
+}
+
+<section class="bg-success py-5" style="margin-top: 5%">
+
+    <center><h3 class="text-white text-center pb-3">Movimientos</h3>
+        <div class="container mt-5">
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+                    <div class="card text-white bg-success border-success mb-3">
+                        <i class="fa fa-arrow-circle-right" aria-hidden="true" style=" font-size: 25px;"></i>
+                        <h4>Entradas</h4>
+                        <p style="font-size:25px">
+                            15
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+                    <div class="card text-white bg-success border-success mb-3">
+                        <i class="fa fa-arrow-circle-left" aria-hidden="true" style=" font-size: 25px;"></i>
+                        <h4>Salidas</h4>
+                        <p style="font-size:25px">
+                            30
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+                    <div class="card text-white bg-success border-success mb-3">
+                        <i class="fa fa-plus" aria-hidden="true" style=" font-size: 25px;"></i>
+                        <h4>Total de calzados</h4>
+                        <p style="font-size:25px">
+                            50
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12 pl-1 pr-1">
+                    <div class="card text-white bg-success border-success mb-3">
+                        <i class="fa fa-calendar" aria-hidden="true" style=" font-size: 25px;"></i>
+                        <h4>Fecha</h4>
+                        <p style="font-size:25px">
+                            @DateTime.Now.ToShortDateString()
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </center>
+</section>
+
+<section class="bg-light py-5">
+    <center>
+        <h3 class="h3">Calzado por reposición</h3>
+        <br />
+        <table class="table table-hover" style="width:80%">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center">Código</th>
+                    <th scope="col" class="text-center">Marca</th>
+                    <th scope="col" class="text-center">Modelo</th>
+                    <th scope="col" class="text-center">Cantidad Mínima</th>
+                    <th scope="col" class="text-center">Cantidad Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-light">
+
+                    <td class="text-center">1001</td>
+                    <td class="text-center">Adidas</td>
+                    <td class="text-center">AM4BJK</td>
+                    <td class="text-center">10</td>
+                    <td class="text-center">5</td>
+                </tr>
+                <tr class="table-light">
+
+                    <td class="text-center">1002</td>
+                    <td class="text-center">Nike</td>
+                    <td class="text-center">Air Max</td>
+                    <td class="text-center">15</td>
+                    <td class="text-center">8</td>
+                </tr>
+                <tr class="table-light">
+
+                    <td class="text-center">1003</td>
+                    <td class="text-center">Puma</td>
+                    <td class="text-center">Cell Surin 2</td>
+                    <td class="text-center">20</td>
+                    <td class="text-center">10</td>
+                </tr>
+                <tr class="table-light">
+
+                    <td class="text-center">1004</td>
+                    <td class="text-center">Under Armour</td>
+                    <td class="text-center">Cloudfoam Pure</td>
+                    <td class="text-center">10</td>
+                    <td class="text-center">2</td>
+                </tr>
+            </tbody>
+        </table>
+    </center>
+</section>
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">S&L Store</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <a class="text-decoration-none" style="color:white">
+                            Frente al registro civil, Atenas, Alajuela, Costa Rica y
+                            frente a la estación de bomberos, Naranjo, Alajuela, Costa Rica
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <a class="text-decoration-none" href="tel:010-020-0340" style="color:white">(+506) 2446 3019 y (+506) 2451 1207</a>
+                    </li>
+                    <li>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <a class="text-decoration-none" href="mailto:info@company.com" style="color:white">S&LStore@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Calzado</h2>
+                <ul class="list-unstyled text-light footer-link-list" >
+                    <li><a class="text-decoration-none" href="#" style="color:white">Adidas</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Nike</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Under Armour</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Puma</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 pt-5">
+                <h2 class="h2 text-light border-bottom pb-3 border-light">Secciones</h2>
+                <ul class="list-unstyled text-light footer-link-list">
+                    <li><a class="text-decoration-none" href="#" style="color:white">Inicio</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Calzado</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Movimientos</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Proveedores</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Sucursal</a></li>
+                    <li><a class="text-decoration-none" href="#" style="color:white">Inventario</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="row text-light mb-4">
+            <div class="col-12 mb-3">
+                <div class="w-100 my-3 border-top border-light"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-100 bg-black py-3">
+        <div class="container">
+            <div class="row pt-2">
+                <div class="col-12">
+                    <p class="text-left text-light">
+                        Copyright &copy; 2021 S&L Store
+                        | Diseñado por Sebastián Acuña & Luanna González
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</footer>
