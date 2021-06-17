@@ -18,7 +18,9 @@ namespace Infraestructure.Repository
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
-                oCalzado = ctx.Calzado.Where(l => l.Id == id).Include("TipoGenero").Include("Tallas").Include("TipoMarca").Include("Proveedor").Include("Proveedor.Agente").Include("Sucursal").FirstOrDefault();
+                oCalzado = ctx.Calzado.Where(l => l.Id == id).Include("TipoGenero").
+                    Include("Tallas").Include("TipoMarca").Include("Proveedor")
+                    .Include("Proveedor.Agente").FirstOrDefault();
             }
             return oCalzado;
         }
