@@ -11,7 +11,9 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(CalzadoxSucursal))]
     public partial class CalzadoxSucursal
     {
         public string IdSucursal { get; set; }

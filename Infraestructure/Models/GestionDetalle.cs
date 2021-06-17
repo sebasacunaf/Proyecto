@@ -11,7 +11,9 @@ namespace Infraestructure.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
+    [MetadataType(typeof(GestionDetalleMetaData))]
     public partial class GestionDetalle
     {
         public int IdGestion { get; set; }
