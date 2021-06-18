@@ -1,139 +1,144 @@
 ﻿@model Infraestructure.Models.Calzado
 
 @{
-    ViewBag.Title = "GetCalzadosByID";
+    ViewBag.Title = "Detalle calzado";
 }
 
+<section class="bg-light py-5" style="margin-top:5%">
+   
+        <h3 class="h3" style="color: #900C3F ">Agentes</h3>
+        <br />
+        <div>
 
-<div>
-    <h4>Calzado</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreMarca)
-        </dt>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Id)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Id)
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.NombreMarca)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NombreMarca)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NombreMarca)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdGenero)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IdGenero)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdGenero)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.IdGenero)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IdTalla)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.IdTalla)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IdTalla)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.IdTalla)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrecioProv)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrecioProv)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PrecioProv)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PrecioProv)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PrecioVent)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.PrecioVent)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PrecioVent)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.PrecioVent)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CantMin)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CantMin)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CantMin)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CantMin)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CantMax)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CantMax)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CantMax)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CantMax)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CantTotal)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CantTotal)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CantTotal)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CantTotal)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion)
+                </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar", "GetCalzados")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Nombre
-        </th>
-        <th>
-            País
-        </th>
-        <th>
-            Ubicación
-        </th>
-    </tr>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+            @Html.ActionLink("Regresar", "GetCalzados")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    País
+                </th>
+                <th>
+                    Ubicación
+                </th>
+            </tr>
 
-    @foreach (var item in Model.Proveedor)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pais)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ubicacion)
-            </td>
-        </tr>
-    }
-</table>
-<table class="table">
-    <tr>
-        <th>
-            Sucursal
-        </th>
-    </tr>
+            @foreach (var item in Model.Proveedor)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pais)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ubicacion)
+                    </td>
+                </tr>
+            }
+        </table>
+        <table class="table">
+            <tr>
+                <th>
+                    Sucursal
+                </th>
+            </tr>
 
-    @foreach (var item in Model.CalzadoxSucursal)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sucursal.Id)
-            </td>
-        </tr>
-    }
-</table>
+            @foreach (var item in Model.CalzadoxSucursal)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sucursal.Id)
+                    </td>
+                </tr>
+            }
+        </table>
+   
+</section>

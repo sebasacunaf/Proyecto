@@ -1,87 +1,57 @@
 ﻿@model IEnumerable<Infraestructure.Models.Calzado>
 
 @{
-    ViewBag.Title = "GetCalzados";
+    ViewBag.Title = "Calzados";
 }
 
-<h2>Lista de calzados</h2>
+<section class="bg-light py-5" style="margin-top:5%">
+    <center>
+        <h3 class="h3" style="color: #900C3F ">Calzados</h3>
+        <br />
+        <table class="table table-hover"  style="width:100%">
+            <tr class="table-light">
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.NombreMarca)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.IdGenero)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.IdTalla)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Descripcion)
+                </th>
+            </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreMarca)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdGenero)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdTalla)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioProv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PrecioVent)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantMin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantMax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantTotal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model)
-{
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Id)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NombreMarca)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdGenero)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.IdTalla)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PrecioProv)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.PrecioVent)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CantMin)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CantMax)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CantTotal)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Descripcion)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Detalle", "GetCalzadosByID", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
-</table>
+            @foreach (var item in Model)
+            {
+                <tr class="table-light">
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.NombreMarca)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.IdGenero)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.IdTalla)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalle", "GetCalzadosByID", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </table>
+    </center>
+</section>
