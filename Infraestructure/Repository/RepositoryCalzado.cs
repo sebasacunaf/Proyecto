@@ -19,7 +19,8 @@ namespace Infraestructure.Repository
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
                 oCalzado = ctx.Calzado.Where(l => l.Id == id).Include("TipoGenero").
-                    Include("Tallas").Include("TipoMarca").Include("Proveedor").FirstOrDefault();
+                    Include("Tallas").Include("TipoMarca").Include("Proveedor")
+                    .Include("CalzadoxSucursal").Include("CalzadoxSucursal.Sucursal").FirstOrDefault();
             }
             return oCalzado;
         }
