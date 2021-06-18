@@ -93,3 +93,47 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Regresar", "GetCalzados")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            Nombre
+        </th>
+        <th>
+            País
+        </th>
+        <th>
+            Ubicación
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Proveedor)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pais)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ubicacion)
+            </td>
+        </tr>
+    }
+</table>
+<table class="table">
+    <tr>
+        <th>
+            Sucursal
+        </th>
+    </tr>
+
+    @foreach (var item in Model.CalzadoxSucursal)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sucursal.Id)
+            </td>
+        </tr>
+    }
+</table>
