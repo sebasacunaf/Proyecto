@@ -11,18 +11,18 @@ namespace Infraestructure.Models
         {
             [Display(Name = "Cédula")]
             public int Id { get; set; }
-            public string Nombre { get; set; }
+        public string Nombre { get; set; }
 
             [Display(Name = "Teléfono")]
             public string Telefono { get; set; }
 
-            [Display(Name = "Correo electrónico")]
+            [Display(Name = "Correo")]
             public string Correo { get; set; }
 
-            [Display(Name = "Código del proveedor")]
+            [Display(Name = "Proveedor")]
             public Nullable<int> IdProveedor { get; set; }
 
-            [Display(Name = "Activo")]
+            [Display(Name = "Estado")]
             public int Estado { get; set; }
         }
     internal partial class GestiónMetaData
@@ -33,10 +33,10 @@ namespace Infraestructure.Models
         [Display(Name = "Usuario")]
         public int IdUsuario { get; set; }
 
-        [Display(Name = "Tipo de Movimiento")]
+        [Display(Name = "Movimiento")]
         public string IdTipoMovimiento { get; set; }
 
-        [Display(Name = "Detalle de Movimiento")]
+        [Display(Name = "Detalle")]
         public string IdDetalleMovimiento { get; set; }
 
         [Display(Name = "Sucursal")]
@@ -45,7 +45,7 @@ namespace Infraestructure.Models
         [Display(Name = "Proveedor")]
         public Nullable<int> IdProveedor { get; set; }
 
-        [Display(Name = "Fecha de Movimiento")]
+        [Display(Name = "Fecha")]
         public string Fecha { get; set; }
     }
     internal partial class GestionDetalleMetaData

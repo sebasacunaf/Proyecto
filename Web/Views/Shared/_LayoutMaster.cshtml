@@ -18,48 +18,48 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="navbar-nav mr-auto" style="color:white">
-                <li class="nav-item" style="margin-top:7px">
+                <li class="nav-item">
                     @Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Calzado</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Registrar</a>
-                        <a class="dropdown-item" href="#">Consultar</a>
+                        @Html.ActionLink("Registrar", "Index", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Consultar", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Movimientos</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Entradas</a>
-                        <a class="dropdown-item" href="#">Salidas</a>
+                        @Html.ActionLink("Entradas", "Index", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Salidas", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Proveedores</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Registrar</a>
-                        <a class="dropdown-item" href="#">Consultar</a>
+                        @Html.ActionLink("Registrar", "Index", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Consultar", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Planilla</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Agregar</a>
-                        <a class="dropdown-item" href="#">Consultar</a>
+                        @Html.ActionLink("Agregar", "Index", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Consultar", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sucursal</a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Atenas</a>
-                        <a class="dropdown-item" href="#">Naranjo</a>
+                        @Html.ActionLink("Atenas", "Index", "Home", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Naranjo", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
-                <li class="nav-item" style="margin-top:8px;margin-left:8px">
-                    <a class="blanco" href="#">Reportes</a>
+                <li class="nav-item" >
+                    @Html.ActionLink("Reportes", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
-                <li class="nav-item" style="margin-top:8px;margin-left:12px">
+                <li class="nav-item">
                     @Html.ActionLink("Acerca", "About", "Home", null, new { @class = "nav-link" })
                 </li>
             </ul>
