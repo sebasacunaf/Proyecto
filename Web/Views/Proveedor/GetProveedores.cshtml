@@ -5,46 +5,49 @@
 }
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ubicacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pais)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th></th>
-    </tr>
+<section class="bg-light py-5" style="margin-top:5%">
+    <center>
+        <h4  style="color: #900C3F ">Proveedores</h4>
+        <br />
+        <table class="table table-hover">
+            <tr class="table-light">
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Ubicacion)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Pais)
+                </th>
+                <th  scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+            </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Nombre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Ubicacion)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Pais)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Estado)
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Detalle", "GetProveedorByID", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr class="table-light">
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Ubicacion)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Pais)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                    <td class="text-center">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Detalle", "GetProveedorByID", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </center>
+</section>

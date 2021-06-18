@@ -4,141 +4,141 @@
     ViewBag.Title = "Detalle calzado";
 }
 
-<section class="bg-light py-5" style="margin-top:5%">
+
+<div>
+    <h4 style="color:#900C3F;margin-top:5%">Detalle</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreMarca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreMarca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdGenero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdGenero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTalla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTalla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioProv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model =>  model.PrecioProv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrecioVent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrecioVent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantMin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantMin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
    
-        <h3 class="h3" style="color: #900C3F ">Agentes</h3>
-        <br />
-        <div>
+</p>
+<center>
+    <h4 style="color:#900C3F;margin-top:5%">Calzado por proveedor</h4>
+    <table class="table table-hover" style="width:50%">
+        <tr class="table-light">
+            <th scope="col" class="text-center">
+                Proveedor
+            </th>
+            <th scope="col" class="text-center">
+                Ubicación
+            </th>
+            <th scope="col" class="text-center">
+                País
+            </th>
+        </tr>
 
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Id)
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.Id)
-                </dd>
-                <dt>
-                    @Html.DisplayNameFor(model => model.NombreMarca)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.NombreMarca)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IdGenero)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IdGenero)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.IdTalla)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.IdTalla)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.PrecioProv)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.PrecioProv)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.PrecioVent)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.PrecioVent)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.CantMin)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CantMin)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.CantMax)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CantMax)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.CantTotal)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.CantTotal)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Descripcion)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Descripcion)
-                </dd>
-
-            </dl>
-        </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-            @Html.ActionLink("Regresar", "GetCalzados")
-        </p>
-        <table class="table">
-            <tr>
-                <th>
-                    Nombre
-                </th>
-                <th>
-                    País
-                </th>
-                <th>
-                    Ubicación
-                </th>
+        @foreach (var item in Model.Proveedor)
+        {
+            <tr class="table-light">
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Ubicacion)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Pais)
+                </td>
             </tr>
+        }
+    </table>
+    <h4 style="color:#900C3F;margin-top:5%">Sucursal por proveedor</h4>
+    <table class="table table-hover" style="width:50%">
+        <tr class="table-light">
+            <th scope="col" class="text-center">
+                Sucursal
+            </th>
+        </tr>
 
-            @foreach (var item in Model.Proveedor)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Pais)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Ubicacion)
-                    </td>
-                </tr>
-            }
-        </table>
-        <table class="table">
-            <tr>
-                <th>
-                    Sucursal
-                </th>
+        @foreach (var item in Model.CalzadoxSucursal)
+        {
+            <tr class="table-light">
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Sucursal.Id)
+                </td>
             </tr>
-
-            @foreach (var item in Model.CalzadoxSucursal)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Sucursal.Id)
-                    </td>
-                </tr>
-            }
-        </table>
-   
-</section>
+        }
+    </table>
+</center>
+<p> @Html.ActionLink("Regresar", "GetCalzados")</p>

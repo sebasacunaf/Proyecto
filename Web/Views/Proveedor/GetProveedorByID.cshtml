@@ -1,11 +1,11 @@
 ﻿@model Infraestructure.Models.Proveedor
 
 @{
-    ViewBag.Title = "Proveedor por ID";
+    ViewBag.Title = "Detalle";
 }
 
 <div>
-    <h4>Proveedor</h4>
+    <h4 style="color: #900C3F; margin-top:5%">Detalle</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -49,23 +49,23 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Regresar", "GetProveedores")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+
 </p>
-<section class="bg-light py-5" style="margin-top:10%">
+
     <center>
-        <h3 class="h3">Agentes por Proveedor</h3>
+        <h4 style="color: #900C3F; margin-top:5%">Agente por proveedor</h4>
         <br />
-        <table class="table table-hover" style="width:100%">
+        <table class="table table-hover" style="width:60%">
             <tr class="table-light">
                 <th scope="col" class="text-center">
                     Código Agente
                 </th>
                 <th scope="col" class="text-center">
-                   Nombre
+                    Nombre
                 </th>
                 <th scope="col" class="text-center">
-                   Telefono
+                    Telefono
                 </th>
                 <th scope="col" class="text-center">
                     Correo
@@ -74,30 +74,27 @@
 
             @foreach (var item in Model.Agente)
             {
-        <tr class="table-light">
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-        </tr>
+                <tr class="table-light">
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Telefono)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Correo)
+                    </td>
+                </tr>
             }
 
         </table>
-    </center>
-</section>
-<section class="bg-light py-5" style="margin-top:10%">
-    <center>
-        <h3 class="h3">Productos por proveedor</h3>
+
+        <h4 style="color: #900C3F; margin-top:5%">Productos por proveedor</h4>
         <br />
-        <table class="table table-hover" style="width:100%">
+        <table class="table table-hover" style="width:60%">
             <tr class="table-light">
                 <th scope="col" class="text-center">
                     Código
@@ -115,22 +112,24 @@
 
             @foreach (var item in Model.Calzado)
             {
-        <tr class="table-light">
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.NombreMarca)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.IdGenero)
-            </td>
-            <td class="text-center">
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-        </tr>
+                <tr class="table-light">
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.NombreMarca)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.IdGenero)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Descripcion)
+                    </td>
+                </tr>
             }
 
         </table>
+
     </center>
 </section>
+<p> @Html.ActionLink("Regresar", "GetProveedores")</p>
