@@ -5,131 +5,139 @@
 }
 
 <div>
-    <h4 style="color: #900C3F; margin-top:5%">Detalle</h4>
-    <hr />
-    <dl class="list-inline">
-        <dt  >
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd >
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt >
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
 
-        <dd >
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+   
+        <div class="card border-light mb-3" style=" margin-top:5%; width:50%; margin-left:25%">
+            <div class="card-header" style="color: #900C3F; font-size: 20px">Detalle</div>
+            <div class="card-body">
 
-        <dt >
-            @Html.DisplayNameFor(model => model.Ubicacion)
-        </dt>
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </dt>
 
-        <dd >
-            @Html.DisplayFor(model => model.Ubicacion)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Nombre)
+                    </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Pais)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ubicacion)
+                    </dt>
 
-        <dd >
-            @Html.DisplayFor(model => model.Pais)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ubicacion)
+                    </dd>
 
-        <dt >
-            @Html.DisplayNameFor(model => model.Estado)
-        </dt>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Pais)
+                    </dt>
 
-        <dd >
-            @Html.DisplayFor(model => model.Estado)
-        </dd>
+                    <dd>
+                        @Html.DisplayFor(model => model.Pais)
+                    </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </dt>
 
-</p>
+                    <dd>
+                        @Html.DisplayFor(model => model.Estado)
+                    </dd>
 
-    <center>
-        <h4 style="color: #900C3F; margin-top:5%">Agente por proveedor</h4>
-        <br />
-        <table class="table table-hover" style="width:60%">
+                </dl>
+                <p>
+                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
+
+                </p>
+            </div>
+        </div>
+   
+</div> 
+
+
+<center>
+    <h4 style="color: #900C3F; margin-top:5%">Agente por proveedor</h4>
+    <br />
+    <table class="table table-hover" style="width:60%">
+        <tr class="table-light">
+            <th scope="col" class="text-center">
+                Código Agente
+            </th>
+            <th scope="col" class="text-center">
+                Nombre
+            </th>
+            <th scope="col" class="text-center">
+                Telefono
+            </th>
+            <th scope="col" class="text-center">
+                Correo
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Agente)
+        {
             <tr class="table-light">
-                <th scope="col" class="text-center">
-                    Código Agente
-                </th>
-                <th scope="col" class="text-center">
-                    Nombre
-                </th>
-                <th scope="col" class="text-center">
-                    Telefono
-                </th>
-                <th scope="col" class="text-center">
-                    Correo
-                </th>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model.Agente)
-            {
-                <tr class="table-light">
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Telefono)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Correo)
-                    </td>
-                </tr>
-            }
+    </table>
 
-        </table>
+    <h4 style="color: #900C3F; margin-top:5%">Productos por proveedor</h4>
+    <br />
+    <table class="table table-hover" style="width:60%">
+        <tr class="table-light">
+            <th scope="col" class="text-center">
+                Código
+            </th>
+            <th scope="col" class="text-center">
+                Nombre
+            </th>
+            <th scope="col" class="text-center">
+                Género
+            </th>
+            <th scope="col" class="text-center">
+                Descripción
+            </th>
+        </tr>
 
-        <h4 style="color: #900C3F; margin-top:5%">Productos por proveedor</h4>
-        <br />
-        <table class="table table-hover" style="width:60%">
+        @foreach (var item in Model.Calzado)
+        {
             <tr class="table-light">
-                <th scope="col" class="text-center">
-                    Código
-                </th>
-                <th scope="col" class="text-center">
-                    Nombre
-                </th>
-                <th scope="col" class="text-center">
-                    Género
-                </th>
-                <th scope="col" class="text-center">
-                    Descripción
-                </th>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.NombreMarca)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.IdGenero)
+                </td>
+                <td class="text-center">
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
             </tr>
+        }
 
-            @foreach (var item in Model.Calzado)
-            {
-                <tr class="table-light">
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.NombreMarca)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.IdGenero)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Descripcion)
-                    </td>
-                </tr>
-            }
+    </table>
 
-        </table>
-
-    </center>
-</section>
+</center>
+        </section>
 <p> @Html.ActionLink("Regresar", "GetProveedores")</p>

@@ -27,6 +27,7 @@ namespace Web
                        "~/Content/font-awesome.css",
                          "~/Content/font-awesome.min.css",
                           "~/Content/Logout.css",
+                           "~/Content/Details.css",
              "~/Content/bootstrap-flatly.min.css"));
             // "~/Content/site.css"
         }
