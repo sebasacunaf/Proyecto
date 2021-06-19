@@ -1,39 +1,43 @@
 ﻿@model IEnumerable<Infraestructure.Models.GestionDetalle>
 
 @{
-    ViewBag.Title = "Detalle de la Gestión";
+    ViewBag.Title = "Detalle";
 }
+<section class="bg-light py-5" style="margin-top:5%">
+    <center>
+        <h4 style="color: #900C3F">Detalle</h4>
+        <br>
+        <table class="table table-hover">
+            <tr class="table-light">
+                <th scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.IdGestion)
+                </th>
+                <th scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.IdCalzado)
+                </th>
+                <th scope="col" class="text-center">
+                    @Html.DisplayNameFor(model => model.Cantidad)
+                </th>
+            </tr>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdGestion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCalzado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cantidad)
-        </th>
-        <th></th>
-    </tr>
+            @foreach (var item in Model)
+            {
+                <tr class="table-light">
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.IdGestion)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.IdCalzado)
+                    </td>
+                    <td class="text-center">
+                        @Html.DisplayFor(modelItem => item.Cantidad)
+                    </td>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdGestion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCalzado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-
-        </tr>
-    }
-</table>
+                </tr>
+            }
+        </table>
+    </center>
+</section>
 <p>
     @Html.ActionLink("Regresar", "GetGestion")
 </p>
