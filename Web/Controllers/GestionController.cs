@@ -30,13 +30,29 @@ namespace Web.Controllers
             return View(lista);
         }
 
-        public ActionResult GetGestionByTipoMovimiento(string tipo)
+        public ActionResult GetGestionByEntrada()
         {
             IEnumerable<Gestion> lista = null;
             try
             {
                 IServiceGestion _SeviceCalzado = new ServiceGestion();
-                lista = _SeviceCalzado.GetGestionsByTipoMovimiento("Entrada");
+                lista = _SeviceCalzado.GetGestionsByEntrada();
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+            }
+            return View(lista);
+        }
+        public ActionResult GetGestionBySalida()
+        {
+            IEnumerable<Gestion> lista = null;
+            try
+            {
+                IServiceGestion _SeviceCalzado = new ServiceGestion();
+                lista = _SeviceCalzado.GetGestionsBySalida();
             }
             catch (Exception ex)
             {

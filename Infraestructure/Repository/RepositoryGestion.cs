@@ -24,7 +24,7 @@ namespace Infraestructure.Repository
             return oGestion;
         }
 
-        public IEnumerable<Gestion> GetGestions()
+        public IEnumerable<Gestion> GetGestions()//todas las gestiones entradas y salidas
         {
             try
             {
@@ -34,7 +34,7 @@ namespace Infraestructure.Repository
                 {
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Select * from Autor
-                    lista = ctx.Gestion.ToList<Gestion>();
+                    lista = ctx.Gestion.Include("GestionDetalle").Include("GestionDetalle.Calzado").ToList<Gestion>();
                 }
                 return lista;
             }
@@ -112,7 +112,7 @@ namespace Infraestructure.Repository
         }
 
 
-        public IEnumerable<Gestion> GetGestionsByTipoMovimiento(string tipo)
+        public IEnumerable<Gestion> GetGestionsByEntrada()
         {
             try
             {
@@ -121,8 +121,8 @@ namespace Infraestructure.Repository
                 using (MyContext ctx = new MyContext())
                 {
                     ctx.Configuration.LazyLoadingEnabled = false;
-                    //Select * from Autor
-                    lista = ctx.Gestion.Where(x=> x.IdTipoMovimiento == tipo).ToList<Gestion>();
+                    lista = ctx.Gestion.Where(x => x.IdTipoMovimiento == "Entrada").Include("GestionDetalle").Include("GestionDetalle.Calzado").ToList<Gestion>();
+   
                 }
                 return lista;
             }
@@ -139,6 +139,36 @@ namespace Infraestructure.Repository
                 Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
                 throw;
             }
+
+        }
+        public IEnumerable<Gestion> GetGestionsBySalida()
+        {
+            try
+            {
+
+                IEnumerable<Gestion> lista = null;
+                using (MyContext ctx = new MyContext())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    lista = ctx.Gestion.Where(x => x.IdTipoMovimiento == "Salida").Include("GestionDetalle").Include("GestionDetalle.Calzado").ToList<Gestion>();
+
+                }
+                return lista;
+            }
+
+            catch (DbUpdateException dbEx)
+            {
+                string mensaje = "";
+                Log.Error(dbEx, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw new Exception(mensaje);
+            }
+            catch (Exception ex)
+            {
+                string mensaje = "";
+                Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
+                throw;
+            }
+
         }
     }
 }

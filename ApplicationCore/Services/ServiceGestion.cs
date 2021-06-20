@@ -23,6 +23,12 @@ namespace ApplicationCore.Services
             return repository.GetGestions();
         }
 
+        public IEnumerable<Gestion> GetGestionsByEntrada()
+        {
+            IRepositoryGestion repository = new RepositoryGestion();
+            return repository.GetGestionsByEntrada();
+        }
+
         public IEnumerable<Gestion> GetGestionsByFecha(string fecha)
         {
             IRepositoryGestion repository = new RepositoryGestion();
@@ -35,10 +41,11 @@ namespace ApplicationCore.Services
             return repository.GetGestionsByFechaAndTipo(fecha, tipo);
         }
 
-        public IEnumerable<Gestion> GetGestionsByTipoMovimiento(string tipo)
+        public IEnumerable<Gestion> GetGestionsBySalida()
         {
             IRepositoryGestion repository = new RepositoryGestion();
-            return repository.GetGestionsByTipoMovimiento(tipo);
+            return repository.GetGestionsBySalida();
         }
+
     }
 }

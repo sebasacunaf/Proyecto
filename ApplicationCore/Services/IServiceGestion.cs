@@ -10,7 +10,9 @@ namespace ApplicationCore.Services
     public interface IServiceGestion
     {
         IEnumerable<Gestion> GetGestions();
-        IEnumerable<Gestion> GetGestionsByTipoMovimiento(string tipo);
+        IEnumerable<Gestion> GetGestionsByEntrada();
+        IEnumerable<Gestion> GetGestionsBySalida();
+
         Gestion GetGestionByID(int id);
         IEnumerable<Gestion> GetGestionsByFecha(string fecha);
         IEnumerable<Gestion> GetGestionsByFechaAndTipo(string fecha, string tipo);

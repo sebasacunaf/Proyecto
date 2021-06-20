@@ -332,7 +332,6 @@
     <Content Include="Views\CalzadoxSucursal\GetCalzadoxSucursal.cshtml" />
     <Content Include="Views\DetalleMovimiento\GetDetallesMovimiento.cshtml" />
     <Content Include="Views\Gestion\GetGestion.cshtml" />
-    <Content Include="Views\Gestion\GetGestionByTipoMovimiento.cshtml" />
     <Content Include="Views\Gestion\GetGestionByFecha.cshtml" />
     <Content Include="Views\Proveedor\GetProveedorByID.cshtml" />
     <Content Include="Views\Tallas\GetTallasByDescripcion.cshtml" />
@@ -340,6 +339,8 @@
     <Content Include="Views\Usuario\GetUsuariobyIDVista.cshtml" />
     <Content Include="Views\Gestion\GetDetalleGestionByID.cshtml" />
     <Content Include="Views\Proveedor\GetProveedores.cshtml" />
+    <Content Include="Views\Gestion\GetGestionByEntrada.cshtml" />
+    <Content Include="Views\Gestion\GetGestionBySalida.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
