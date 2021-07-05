@@ -11,5 +11,6 @@ namespace ApplicationCore.Services
     {
         IEnumerable<Proveedor> GetProveedores();
         Proveedor GetProveedorByID(int id);
+        Proveedor Save(Proveedor proveedor);
     }
 }

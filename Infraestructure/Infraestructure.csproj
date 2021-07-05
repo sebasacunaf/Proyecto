@@ -147,6 +147,7 @@
     <Compile Include="Repository\RepositoryUsuario.cs" />
     <Compile Include="Repository\RepositoryTipoUsuario.cs" />
     <Compile Include="Utils\Log.cs" />
+    <Compile Include="Utils\Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

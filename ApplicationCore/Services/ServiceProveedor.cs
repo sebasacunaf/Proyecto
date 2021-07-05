@@ -21,5 +21,11 @@ namespace ApplicationCore.Services
             IRepositoryProveedor repository = new RepositoryProveedor();
             return repository.GetProveedores();
         }
+
+        public Proveedor Save(Proveedor proveedor)
+        {
+            IRepositoryProveedor repository = new RepositoryProveedor();
+            return repository.Save(proveedor);
+        }
     }
 }

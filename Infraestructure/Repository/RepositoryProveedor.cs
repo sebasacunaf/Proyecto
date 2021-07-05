@@ -25,7 +25,7 @@ namespace Infraestructure.Repository
                     Include("Calzado.TipoGenero").
                     Include("Calzado.Tallas").
                     Include("Calzado.TipoMarca").
-                    Include("Agente").First<Proveedor>();
+                    Include("Agente").FirstOrDefault();
                 
             }
             return oProveedor;
@@ -57,6 +57,67 @@ namespace Infraestructure.Repository
                 Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod(), ref mensaje);
                 throw;
             }
+        }
+        public Proveedor Save(Proveedor proveedor)
+        {
+            int retorno = 0;
+            Proveedor oproveedor = null;
+
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                oproveedor = GetProveedorByID((int)proveedor.Id);
+                //IRepositoryAgente _RepositoryAgente = new RepositoryAgente();
+
+                if (oproveedor == null)
+                {
+
+                    //Insertar
+                    //if (agentes != null)
+                    //{
+
+                    //    proveedor.Agente = new List<Agente>();
+                    //    foreach (var agente in agentes)
+                    //    {
+                    //        var agenteToAdd = _RepositoryAgente.GetAgenteByID(agente.Id);
+                    //        ctx.Agente.Attach(agenteToAdd); //sin esto, EF intentará crear una categoría
+                    //        proveedor.Agente.Add(agenteToAdd);// asociar a la categoría existente con el libro
+                    //    }
+                    //}
+                    ctx.Proveedor.Add(proveedor);
+                    //SaveChanges
+                    //guarda todos los cambios realizados en el contexto de la base de datos.
+                    retorno = ctx.SaveChanges();
+                    //retorna número de filas afectadas
+                }
+                else
+                {
+                    //Registradas: 1,2,3
+                    //Actualizar: 1,3,4
+
+                    //Actualizar Libro
+                    ctx.Proveedor.Add(proveedor);
+                    ctx.Entry(proveedor).State = EntityState.Modified;
+                    retorno = ctx.SaveChanges();
+                    //Actualizar Categorias
+                    //var selectedCategoriasID = new HashSet<string>(selectedCategorias);
+                    //if (selectedCategorias != null)
+                    //{
+                    //    ctx.Entry(libro).Collection(p => p.Categoria).Load();
+                    //    var newCategoriaForLibro = ctx.Categoria
+                    //     .Where(x => selectedCategoriasID.Contains(x.IdCategoria.ToString())).ToList();
+                    //    libro.Categoria = newCategoriaForLibro;
+
+                    //    ctx.Entry(libro).State = EntityState.Modified;
+                    //    retorno = ctx.SaveChanges();
+                    //}
+                }
+            }
+
+            if (retorno >= 0)
+                oproveedor = GetProveedorByID(proveedor.Id);
+
+            return oproveedor;
         }
     }
 }

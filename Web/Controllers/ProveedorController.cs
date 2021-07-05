@@ -50,5 +50,41 @@ namespace Web.Controllers
             }
             return View(pro);
         }
+        public ActionResult CreateProveedor()
+        {
+            //Lista de autores
+            return View();
+        }
+
+        public ActionResult Save(Proveedor proveedor)
+        {
+            IServiceProveedor _ServiceProveedor = new ServiceProveedor();
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Proveedor oProveedor = _ServiceProveedor.Save(proveedor);
+                    Console.WriteLine("guardado");
+                }
+                else
+                {
+                    Util.Util.ValidateErrors(this);
+                    return View("CreateProveedor", proveedor);
+                }
+
+                return RedirectToAction("GetProveedores");
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "Proveedor";
+                TempData["Redirect-Action"] = "GetProveedores";
+                // Redireccion a la captura del Error
+                Console.WriteLine("ERRORRRRRRRRRRRRR");
+                return RedirectToAction("");
+            }
+        }
     }
 }

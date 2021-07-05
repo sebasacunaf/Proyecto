@@ -11,6 +11,6 @@ namespace Infraestructure.Repository
     {
         IEnumerable<Proveedor> GetProveedores();
         Proveedor GetProveedorByID(int id);
-
+        Proveedor Save(Proveedor proveedor);
     }
 }
