@@ -10,6 +10,6 @@ namespace Infraestructure.Repository
    public interface IRepositorySucursal
     {
         IEnumerable<Sucursal> GetSucursals();
-
+        Sucursal GetSucursalByID(string id);
     }
 }

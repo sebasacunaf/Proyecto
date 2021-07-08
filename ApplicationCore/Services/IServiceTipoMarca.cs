@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
     public interface IServiceTipoMarca
     {
         IEnumerable<TipoMarca> GetTipoMarcas();
+        TipoMarca GetTipoNombreByID(string nombre);
     }
 }

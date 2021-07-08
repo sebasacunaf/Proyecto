@@ -11,6 +11,17 @@ namespace Infraestructure.Repository
 {
     public class RepositorySucursal : IRepositorySucursal
     {
+        public Sucursal GetSucursalByID(string id)
+        {
+                Sucursal oSucursal = null;
+                using (MyContext ctx = new MyContext())
+                {
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    //oAgente = ctx.Agente.Find(id);
+                    oSucursal = ctx.Sucursal.Where(x => x.Id == id).FirstOrDefault();
+                }
+                return oSucursal;
+        }
 
         public IEnumerable<Sucursal> GetSucursals()
         {

@@ -10,5 +10,6 @@ namespace Infraestructure.Repository
    public interface IRepositoryTipoGenero
     {
         IEnumerable<TipoGenero> GetTipoGeneros();
+        TipoGenero GetTipoGeneroByID(string id);
     }
 }

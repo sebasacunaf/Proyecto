@@ -15,5 +15,10 @@ namespace ApplicationCore.Services
             IRepositoryTipoMarca repository = new RepositoryTipoMarca();
             return repository.GetTipoMarcas();
         }
+        public TipoMarca GetTipoNombreByID(string nombre)
+        {
+            IRepositoryTipoMarca repository = new RepositoryTipoMarca();
+            return repository.GetTipoMarcaByID(nombre);
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace ApplicationCore.Services
         IEnumerable<Calzado> GetCalzadosByMarca(String marca);
         IEnumerable<Calzado> GetCalzadosByGenero(String genero);
         IEnumerable<Calzado> GetCalzadosByTalla(int talla);
+        Calzado Save(Calzado calzado);
     }
 }

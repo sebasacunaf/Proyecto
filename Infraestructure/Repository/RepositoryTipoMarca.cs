@@ -11,6 +11,16 @@ namespace Infraestructure.Repository
 {
     public class RepositoryTipoMarca : IRepositoryTipoMarca
     {
+        public TipoMarca GetTipoMarcaByID(string nombre)
+        {
+            TipoMarca oTipoMarca = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                oTipoMarca = ctx.TipoMarca.Where(l => l.Nombre == nombre).FirstOrDefault();
+            }
+            return oTipoMarca;
+        }
 
         public IEnumerable<TipoMarca> GetTipoMarcas()
         {

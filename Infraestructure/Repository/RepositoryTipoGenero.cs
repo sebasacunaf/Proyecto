@@ -11,6 +11,16 @@ namespace Infraestructure.Repository
 {
     public class RepositoryTipoGenero : IRepositoryTipoGenero
     {
+        public TipoGenero GetTipoGeneroByID(string id)
+        {
+            TipoGenero oTipoGenero = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                oTipoGenero = ctx.TipoGenero.Where(l => l.Id == id).FirstOrDefault();
+            }
+            return oTipoGenero;
+        }
 
         public IEnumerable<TipoGenero> GetTipoGeneros()
         {

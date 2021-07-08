@@ -10,5 +10,6 @@ namespace Infraestructure.Repository
     public interface IRepositoryTipoMarca
     {
         IEnumerable<TipoMarca> GetTipoMarcas();
+        TipoMarca GetTipoMarcaByID(string nombre);
     }
 }

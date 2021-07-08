@@ -10,5 +10,6 @@ namespace ApplicationCore.Services
    public interface IServiceTipoGenero
     {
         IEnumerable<TipoGenero> GetTipoGeneros();
+        TipoGenero GetTipoGeneroByID(string id);
     }
 }

@@ -15,5 +15,10 @@ namespace ApplicationCore.Services
             IRepositoryTipoGenero repository = new RepositoryTipoGenero();
             return repository.GetTipoGeneros();
         }
+        public TipoGenero GetTipoGeneroByID(string id)
+        {
+            IRepositoryTipoGenero repository = new RepositoryTipoGenero();
+            return repository.GetTipoGeneroByID(id);
+        }
     }
 }
