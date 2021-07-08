@@ -50,6 +50,7 @@ namespace Web.Controllers
             }
             return View(pro);
         }
+
         public ActionResult CreateProveedor()
         {
             //Lista de autores
@@ -64,7 +65,6 @@ namespace Web.Controllers
                 if (ModelState.IsValid)
                 {
                     Proveedor oProveedor = _ServiceProveedor.Save(proveedor);
-                    Console.WriteLine("guardado");
                 }
                 else
                 {

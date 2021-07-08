@@ -344,6 +344,7 @@
     <Content Include="Views\Proveedor\CreateProveedor.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Calzado\CreateCalzado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

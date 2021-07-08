@@ -224,7 +224,7 @@ namespace Infraestructure.Repository
                     ctx.Entry(calzado).State = EntityState.Modified;
                     retorno = ctx.SaveChanges();
                     //Actualizar Proveedores
-                    var selectedProveedoresID = new HashSet<Proveedor>(proveedores);
+                    var selectedProveedoresID = proveedores;
                     if (proveedores != null)
                     {
                         ctx.Entry(calzado).Collection(p => p.Proveedor).Load();

@@ -10,10 +10,10 @@ namespace ApplicationCore.Services
 {
     public class ServiceCalzado : IServiceCalzado
     {
-        public Calzado Save(Calzado calzado)
+        public Calzado Save(Calzado calzado, TipoGenero tipoGenero, Tallas tallas, TipoMarca tipoMarca, CalzadoxSucursal[] calzadoxSucursal, Proveedor[] proveedores)
         {
             IRepositoryCalzado repository = new RepositoryCalzado();
-            return repository.Save(calzado);
+            return repository.Save(calzado, tipoGenero, tallas, tipoMarca, calzadoxSucursal, proveedores);
         }
         public Calzado GetCalzadoByID(int id)
         {
@@ -44,5 +44,6 @@ namespace ApplicationCore.Services
             IRepositoryCalzado repository = new RepositoryCalzado();
             return repository.GetCalzadosByTalla(talla);
         }
+
     }
 }
