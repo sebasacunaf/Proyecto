@@ -13,5 +13,6 @@ namespace ApplicationCore.Services
         Agente GetAgenteByID(int id);
 
         IEnumerable<Agente> GetAgentesByProveedor(int id);
+        Agente Save(Agente agente);
     }
 }

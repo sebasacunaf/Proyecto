@@ -5,56 +5,53 @@
 }
 
 <div>
-
-   
         <div class="card border-light mb-3" style=" margin-top:5%; width:50%; margin-left:25%">
             <div class="card-header" style="color: #900C3F; font-size: 20px">Detalle</div>
             <div class="card-body">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Id)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </dt>
 
-                <dl class="dl-horizontal">
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Id)
-                    </dt>
-                    <dd>
-                        @Html.DisplayFor(model => model.Id)
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Nombre)
-                    </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nombre)
+                        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Nombre)
-                    </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Ubicacion)
+                        </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Ubicacion)
-                    </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Ubicacion)
+                        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Ubicacion)
-                    </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Pais)
+                        </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Pais)
-                    </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Pais)
+                        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Pais)
-                    </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </dt>
 
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Estado)
-                    </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.Estado)
+                        </dd>
 
-                    <dd>
-                        @Html.DisplayFor(model => model.Estado)
-                    </dd>
+                    </dl>
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
 
-                </dl>
-                <p>
-                    @Html.ActionLink("Editar", "Edit", new { id = Model.Id })
-
-                </p>
+                    </p>
             </div>
         </div>
    
@@ -63,7 +60,12 @@
 
 <center>
     <h4 style="color: #900C3F; margin-top:5%">Agente por proveedor</h4>
+
     <br />
+    <p>
+        @Html.ActionLink("Nuevo Agente", "CreateAgente", "Agente")
+
+    </p>
     <table class="table table-hover" style="width:60%">
         <tr class="table-light">
             <th scope="col" class="text-center">
@@ -78,24 +80,31 @@
             <th scope="col" class="text-center">
                 Correo
             </th>
+            <th>
+
+            </th>
         </tr>
 
         @foreach (var item in Model.Agente)
         {
-            <tr class="table-light">
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Telefono)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Correo)
-                </td>
-            </tr>
+    <tr class="table-light">
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Telefono)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Correo)
+        </td>
+        <td class="text-center">
+            @Html.ActionLink("Editar", "Edit", "Agente", new { id = item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+        </td>
+    </tr>
         }
 
     </table>
@@ -120,20 +129,21 @@
 
         @foreach (var item in Model.Calzado)
         {
-            <tr class="table-light">
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.NombreMarca)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.IdGenero)
-                </td>
-                <td class="text-center">
-                    @Html.DisplayFor(modelItem => item.Descripcion)
-                </td>
-            </tr>
+    <tr class="table-light">
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.NombreMarca)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.IdGenero)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+
+    </tr>
         }
 
     </table>

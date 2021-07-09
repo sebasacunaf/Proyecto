@@ -13,5 +13,6 @@ namespace Infraestructure.Repository
         Agente GetAgenteByID(int id);
 
         IEnumerable<Agente> GetAgentesByProveedor(int id);
+        Agente Save(Agente agente);
     }
 }

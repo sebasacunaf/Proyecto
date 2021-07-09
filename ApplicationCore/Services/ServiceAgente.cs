@@ -15,7 +15,11 @@ namespace ApplicationCore.Services
             IRepositoryAgente repositoryAgente = new RepositoryAgente();
             return repositoryAgente.GetAgenteByID(id);
         }
-
+        public Agente Save(Agente agente)
+        {
+            IRepositoryAgente repositoryAgente = new RepositoryAgente();
+            return repositoryAgente.Save(agente);
+        }
         public IEnumerable<Agente> GetAgentes()
         {
             IRepositoryAgente repositoryAgente = new RepositoryAgente();
