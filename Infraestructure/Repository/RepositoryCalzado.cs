@@ -228,8 +228,8 @@ namespace Infraestructure.Repository
                     if (proveedores != null)
                     {
                         ctx.Entry(calzado).Collection(p => p.Proveedor).Load();
-                        var newProveedorForCalzado = ctx.Proveedor.Where(x => selectedProveedoresID.Contains(x)).ToList();
-                        calzado.Proveedor = newProveedorForCalzado;
+                        //var newProveedorForCalzado = ctx.Proveedor.Where(x => selectedProveedoresID.Contains(x.Id.ToString())).ToList();
+                        //calzado.Proveedor = newProveedorForCalzado;
 
                         ctx.Entry(calzado).State = EntityState.Modified;
                         retorno = ctx.SaveChanges();

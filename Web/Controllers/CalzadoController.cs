@@ -77,7 +77,7 @@ namespace Web.Controllers
             }
             return View(lista);
         }
-        private SelectList listaTallas(string descripcion="")
+        private SelectList listaTallas(string descripcion="Adulto")
         {
             //Lista de autores
             IServiceTallas _ServiceTallas = new ServiceTallas();
@@ -91,24 +91,24 @@ namespace Web.Controllers
             IServiceTipoGenero _ServiceTipoGenero = new ServiceTipoGenero();
             IEnumerable<TipoGenero> listaGenero = _ServiceTipoGenero.GetTipoGeneros();
             //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaGenero, "Id", "Tipo Género");
+            return new SelectList(listaGenero, "Id", "Id");
         }
-        private SelectList listaCategoria()
-        {
-            //Lista de autores
-            List<string> listaCategoria = new List<string>();
-            listaCategoria.Add("Adulto");
-            listaCategoria.Add("Niño");
-            //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaCategoria, "Id", "Categoría");
-        }
+        //private SelectList listaCategoria()
+        //{
+        //    //Lista de autores
+        //    List<string> listaCategoria = new List<string>();
+        //    listaCategoria.Add("Adulto");
+        //    listaCategoria.Add("Niño");
+        //    //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+        //    return new SelectList(listaCategoria, "Id", "Categoría");
+        //}
         private SelectList listaMarcas()
         {
             //Lista de autores
             IServiceTipoMarca _ServiceTipoMarca = new ServiceTipoMarca();
             IEnumerable<TipoMarca> listaMarca = _ServiceTipoMarca.GetTipoMarcas();
             //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaMarca, "Nombre", "Marca");
+            return new SelectList(listaMarca, "Nombre", "Nombre");
         }
         private MultiSelectList listaSucursales(ICollection<Sucursal> sucursales)
         {
@@ -121,26 +121,26 @@ namespace Web.Controllers
 
                 listaSucursalesSelect = sucursales.Select(c => c.Id.ToString()).ToArray();
             }
-            return new MultiSelectList(listaSucursales, "IdSucursales", "Nombre", listaSucursalesSelect);
+            return new MultiSelectList(listaSucursales, "Id", "Id", listaSucursalesSelect);
         }
         public ActionResult CreateCalzado()
         {
             //Lista de autores
             ViewBag.Marca = listaMarcas();
             ViewBag.TipoGenero = listaGenero();
-            ViewBag.Categoria = listaCategoria();
+            //ViewBag.Categoria = listaCategoria();
             ViewBag.Tallas = listaTallas();
             ViewBag.Sucursal = listaSucursales(null);
             return View();
         }
-        public ActionResult Save(Calzado calzado)
+        public ActionResult Save(Calzado calzado, TipoGenero tipoGenero,Tallas tallas, TipoMarca tipoMarca, CalzadoxSucursal[] calzadoxSucursal, Proveedor[] proveedores )
         {
             IServiceCalzado _ServiceCalzado = new ServiceCalzado();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Calzado oCalzado = _ServiceCalzado.Save(calzado);
+                    Calzado oCalzado = _ServiceCalzado.Save(calzado, tipoGenero, tallas, tipoMarca, calzadoxSucursal, proveedores);
                 }
                 else
                 {
