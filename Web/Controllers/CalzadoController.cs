@@ -78,21 +78,13 @@ namespace Web.Controllers
             }
             return View(lista);
         }
-        private SelectList listaTallas(string descripcion="")
+        private SelectList listaTallas()
         {
             //Lista de autores
             IServiceTallas _ServiceTallas = new ServiceTallas();
-            IEnumerable<Tallas> listaTallas = _ServiceTallas.GetTallas(descripcion);
-            List<Tallas> listaTallas1 = new List<Tallas>();
-            foreach (Tallas lista in listaTallas)
-            {
-                if (descripcion == lista.Descripcion)
-                {
-                    listaTallas1.Add(lista);
-                }
-            }
+            IEnumerable<Tallas> listaTallas = _ServiceTallas.GetTallas();
             //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaTallas1, "Id", "Talla", descripcion);
+            return new SelectList(listaTallas, "Id", "Talla");
         }
         private SelectList listaGenero()
         {
@@ -102,15 +94,15 @@ namespace Web.Controllers
             //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
             return new SelectList(listaGenero, "Id", "Id");
         }
-        private SelectList listaCategoria()
-        {
-            //Lista de autores
-            List<Clasificacion> listaCategoria = new List<Clasificacion>();
-            listaCategoria.Add(new Clasificacion(1, "Niño"));
-            listaCategoria.Add(new Clasificacion(2, "Adulto"));
-            //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaCategoria, "Id", "Categoria");
-        }
+        //private SelectList listaCategoria()
+        //{
+        //    //Lista de autores
+        //    List<Clasificacion> listaCategoria = new List<Clasificacion>();
+        //    listaCategoria.Add(new Clasificacion(1, "Niño"));
+        //    listaCategoria.Add(new Clasificacion(2, "Adulto"));
+        //    //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+        //    return new SelectList(listaCategoria, "Id", "Categoria");
+        //}
         private SelectList listaMarcas()
         {
             //Lista de autores
@@ -137,7 +129,7 @@ namespace Web.Controllers
             //Lista de autores
             ViewBag.Marca = listaMarcas();
             ViewBag.TipoGenero = listaGenero();
-            ViewBag.Categoria = listaCategoria();
+            //ViewBag.Categoria = listaCategoria();
             ViewBag.Tallas = listaTallas();
             ViewBag.Sucursal = listaSucursales(null);
             return View();

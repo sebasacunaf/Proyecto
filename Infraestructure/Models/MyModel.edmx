@@ -99,8 +99,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Talla" Type="money" Nullable="false" />
-          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Talla" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="TipoGenero">
           <Key>
@@ -528,8 +527,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Talla" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Talla" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Calzado" Relationship="Self.FK__Calzado__IdTalla__3B75D760" FromRole="Tallas" ToRole="Calzado" />
         </EntityType>
         <EntityType Name="TipoGenero">
@@ -749,7 +747,7 @@
           <End Role="Calzado" Type="Self.Calzado" Multiplicity="*" />
           <End Role="Proveedor" Type="Self.Proveedor" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="INVENTARIOEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="INVENTARIOEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agente" EntityType="Self.Agente" />
           <EntitySet Name="Calzado" EntityType="Self.Calzado" />
           <EntitySet Name="CalzadoxSucursal" EntityType="Self.CalzadoxSucursal" />
@@ -830,7 +828,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="INVENTARIOModelStoreContainer" CdmEntityContainer="INVENTARIOEntities">
+        <EntityContainerMapping StorageEntityContainer="INVENTARIOModelStoreContainer" CdmEntityContainer="INVENTARIOEntities1">
           <EntitySetMapping Name="Agente">
             <EntityTypeMapping TypeName="INVENTARIOModel.Agente">
               <MappingFragment StoreEntitySet="Agente">
@@ -922,7 +920,6 @@
               <MappingFragment StoreEntitySet="Tallas">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Talla" ColumnName="Talla" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

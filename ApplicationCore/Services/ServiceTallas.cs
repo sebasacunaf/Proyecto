@@ -10,10 +10,10 @@ namespace ApplicationCore.Services
 {
     public class ServiceTallas : IServiceTallas
     {
-        public IEnumerable<Tallas> GetTallas(string descripcion)
+        public IEnumerable<Tallas> GetTallas()
         {
             IRepositoryTallas repository = new RepositoryTallas();
-            return repository.GetTallas(descripcion);
+            return repository.GetTallas();
         }
 
         public Tallas GetTallasByID(int id)

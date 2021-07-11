@@ -9,7 +9,7 @@ namespace Infraestructure.Repository
 {
     public interface IRepositoryTallas
     {
-        IEnumerable<Tallas> GetTallas(string descripcion);
+        IEnumerable<Tallas> GetTallas();
         Tallas GetTallasByID(int id);
     }
 }

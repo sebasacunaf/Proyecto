@@ -12,7 +12,7 @@ namespace Infraestructure.Repository
     public class RepositoryTallas : IRepositoryTallas
     {
 
-        public IEnumerable<Tallas> GetTallas(string descripcion)
+        public IEnumerable<Tallas> GetTallas()
         {
             try
             {
@@ -22,7 +22,7 @@ namespace Infraestructure.Repository
                 {
                     ctx.Configuration.LazyLoadingEnabled = false;
                     //Select * from Autor
-                    lista = ctx.Tallas.Where(x => x.Descripcion == descripcion).ToList<Tallas>();
+                    lista = ctx.Tallas.ToList<Tallas>();
                 }
                 return lista;
             }

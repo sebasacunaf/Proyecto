@@ -9,7 +9,7 @@ namespace ApplicationCore.Services
 {
     public interface IServiceTallas
     {
-        IEnumerable<Tallas> GetTallas(string descripcion);
+        IEnumerable<Tallas> GetTallas();
         Tallas GetTallasByID(int id);
     }
 }

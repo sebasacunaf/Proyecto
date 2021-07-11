@@ -13,13 +13,13 @@ namespace Web.Controllers
     public class TallasController : Controller
     {
         // GET: Tallas
-        public IEnumerable<Tallas> GetTallasByDescripcion(string descripcion)
+        public IEnumerable<Tallas> GetTallasByDescripcion()
         {
             IEnumerable<Tallas> lista = null;
             try
             {
                 IServiceTallas _SeviceTallas = new ServiceTallas();
-                lista = _SeviceTallas.GetTallas("Niño");
+                lista = _SeviceTallas.GetTallas();
             }
             catch (Exception ex)
             {

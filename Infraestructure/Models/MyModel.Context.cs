@@ -13,10 +13,10 @@ namespace Infraestructure.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class INVENTARIOEntities : DbContext
+    public partial class INVENTARIOEntities1 : DbContext
     {
-        public INVENTARIOEntities()
-            : base("name=INVENTARIOEntities")
+        public INVENTARIOEntities1()
+            : base("name=INVENTARIOEntities1")
         {
         }
     
