@@ -346,7 +346,7 @@
     <Content Include="Views\Calzado\CreateCalzado.cshtml" />
     <Content Include="Views\Proveedor\CreateProveedor.cshtml" />
     <Content Include="Views\Agente\CreateAgente.cshtml" />
-    <Content Include="Views\Agente\Edit.cshtml" />
+    <Content Include="Views\Agente\Editar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

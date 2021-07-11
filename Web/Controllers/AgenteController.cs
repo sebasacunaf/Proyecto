@@ -27,7 +27,8 @@ namespace Web.Controllers
             ViewBag.Proveedores = listaProveedores();
             return View();
         }
-        public ActionResult Edit(int? id)
+        [HttpPost]
+        public ActionResult Editar(int? id)
         {
             ServiceAgente _ServiceAgente = new ServiceAgente();
             Agente agente = null;
@@ -37,7 +38,7 @@ namespace Web.Controllers
                 // Si va null
                 if (id == null)
                 {
-                    return RedirectToAction("GetProveedorByID", "Proveedor");
+                    return RedirectToAction("Index", "Home");
                 }
 
                 agente = _ServiceAgente.GetAgenteByID(id.Value);
@@ -45,12 +46,12 @@ namespace Web.Controllers
                 {
                     TempData["Message"] = "No existe el agente solicitado";
                     TempData["Redirect"] = "Agente";
-                    TempData["Redirect-Action"] = "GetProveedores";
+                    TempData["Redirect-Action"] = "Index";
                     // Redireccion a la captura del Error
                     return RedirectToAction("Default", "Error");
                 }
                 //Lista de autores
-                ViewBag.Proveedore = listaProveedores();
+                ViewBag.Proveedores = listaProveedores();
                 return View(agente);
             }
             catch (Exception ex)
