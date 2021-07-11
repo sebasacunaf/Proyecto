@@ -25,8 +25,7 @@ namespace Infraestructure.Repository
                     Include("Calzado.TipoGenero").
                     Include("Calzado.Tallas").
                     Include("Calzado.TipoMarca").
-                    Include("Agente").FirstOrDefault();
-                
+                    Include("Agente").FirstOrDefault(); 
             }
             return oProveedor;
         }
@@ -96,6 +95,7 @@ namespace Infraestructure.Repository
                     //Actualizar: 1,3,4
 
                     //Actualizar Libro
+                    proveedor.Id = oproveedor.Id;
                     ctx.Proveedor.Add(proveedor);
                     ctx.Entry(proveedor).State = EntityState.Modified;
                     retorno = ctx.SaveChanges();

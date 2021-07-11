@@ -13,13 +13,13 @@ namespace Web.Controllers
     public class AgenteController : Controller
     {
         // GET: Agente
-        private SelectList listaProveedores()
+        private SelectList listaProveedores(int idProveedor = 0)
         {
             //Lista de autores
             IServiceProveedor _ServiceProveedor = new ServiceProveedor();
             IEnumerable<Proveedor> listaProveedor = _ServiceProveedor.GetProveedores();
             //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaProveedor, "Id", "Nombre");
+            return new SelectList(listaProveedor, "Id", "Nombre", idProveedor);
         }
         public ActionResult CreateAgente()
         {
@@ -27,8 +27,7 @@ namespace Web.Controllers
             ViewBag.Proveedores = listaProveedores();
             return View();
         }
-        [HttpPost]
-        public ActionResult EditarAgente(int? id)
+        public ActionResult Editar(int? id)
         {
             ServiceAgente _ServiceAgente = new ServiceAgente();
             Agente agente = null;
@@ -47,11 +46,11 @@ namespace Web.Controllers
                     TempData["Message"] = "No existe el agente solicitado";
                     TempData["Redirect"] = "Agente";
                     TempData["Redirect-Action"] = "Index";
-                    // Redireccion a la captura del Error
+                    //Redireccion a la captura del Error
                     return RedirectToAction("Default", "Error");
                 }
                 //Lista de autores
-                ViewBag.Proveedores = listaProveedores();
+                ViewBag.Proveedores = listaProveedores(agente.IdProveedor.Value);
                 return View(agente);
             }
             catch (Exception ex)
@@ -60,8 +59,8 @@ namespace Web.Controllers
                 Log.Error(ex, MethodBase.GetCurrentMethod());
                 TempData["Message"] = "Error al procesar los datos! " + ex.Message;
                 TempData["Redirect"] = "Agente";
-                TempData["Redirect-Action"] = "GetProveedores";
-                // Redireccion a la captura del Error
+                TempData["Redirect-Action"] = "GetAgentes";
+                //Redireccion a la captura del Error
                 return RedirectToAction("Default", "Error");
             }
         }
@@ -78,18 +77,19 @@ namespace Web.Controllers
                 else
                 {
                     Util.Util.ValidateErrors(this);
+                    ViewBag.Proveedores = listaProveedores(agente.IdProveedor.Value);
                     return View("CreateAgente", agente);
                 }
 
-                return RedirectToAction("GetProveedorByID", "Proveedor", new { id = agente.IdProveedor });
+                return RedirectToAction("GetAgentes", "Agente");
             }
             catch (Exception ex)
             {
                 // Salvar el error en un archivo 
                 Log.Error(ex, MethodBase.GetCurrentMethod());
                 TempData["Message"] = "Error al procesar los datos! " + ex.Message;
-                TempData["Redirect"] = "Proveedor";
-                TempData["Redirect-Action"] = "GetProveedores";
+                TempData["Redirect"] = "Agente";
+                TempData["Redirect-Action"] = "GetAgentes";
                 // Redireccion a la captura del Error
                 return RedirectToAction("");
             }

@@ -32,8 +32,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Movimientos</a>
                     <div class="dropdown-menu">
-                        @Html.ActionLink("Entradas", "GetGestionByEntrada", "Gestion",null, new { @class = "dropdown-item" })
-                        @Html.ActionLink("Salidas", "GetGestionBySalida", "Gestion",null,  new { @class = "dropdown-item" })
+                        @Html.ActionLink("Entradas", "GetGestionByEntrada", "Gestion", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Salidas", "GetGestionBySalida", "Gestion", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -41,6 +41,13 @@
                     <div class="dropdown-menu">
                         @Html.ActionLink("Registrar", "CreateProveedor", "Proveedor", null, new { @class = "dropdown-item" })
                         @Html.ActionLink("Consultar", "GetProveedores", "Proveedor", null, new { @class = "dropdown-item" })
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Agentes</a>
+                    <div class="dropdown-menu">
+                        @Html.ActionLink("Registrar", "CreateAgente", "Agente", null, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Consultar", "GetAgentes", "Agente", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -57,7 +64,7 @@
                         @Html.ActionLink("Naranjo", "Index", "Home", null, new { @class = "dropdown-item" })
                     </div>
                 </li>
-                <li class="nav-item" >
+                <li class="nav-item">
                     @Html.ActionLink("Reportes", "Index", "Home", null, new { @class = "nav-link" })
                 </li>
                 <li class="nav-item">

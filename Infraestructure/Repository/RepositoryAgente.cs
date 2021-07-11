@@ -19,7 +19,7 @@ namespace Infraestructure.Repository
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
                 //oAgente = ctx.Agente.Find(id);
-                oAgente = ctx.Agente.Where(x => x.Id == id).FirstOrDefault();
+                oAgente = ctx.Agente.Where(x => x.Id == id).Include(y => y.Proveedor).FirstOrDefault();
             }
             return oAgente;
         }
@@ -88,7 +88,7 @@ namespace Infraestructure.Repository
             using (MyContext ctx = new MyContext())
             {
                 ctx.Configuration.LazyLoadingEnabled = false;
-                oAgente = GetAgenteByID(agente.Id);
+                oAgente = GetAgenteByID((int)agente.Id);
                 //IRepositoryAgente _RepositoryAgente = new RepositoryAgente();
 
                 if (oAgente == null)
@@ -106,6 +106,7 @@ namespace Infraestructure.Repository
                     //        proveedor.Agente.Add(agenteToAdd);// asociar a la categoría existente con el libro
                     //    }
                     //}
+
                     ctx.Agente.Add(agente);
                     //SaveChanges
                     //guarda todos los cambios realizados en el contexto de la base de datos.
@@ -118,6 +119,10 @@ namespace Infraestructure.Repository
                     //Actualizar: 1,3,4
 
                     //Actualizar Libro
+                    //IRepositoryProveedor repo = new RepositoryProveedor();
+                    //agente.Proveedor = repo.GetProveedorByID(oAgente.IdProveedor.Value);
+                    //agente.IdProveedor = oAgente.IdProveedor.Value;
+                    agente.IdProveedor = oAgente.IdProveedor;
                     ctx.Agente.Add(agente);
                     ctx.Entry(agente).State = EntityState.Modified;
                     retorno = ctx.SaveChanges();

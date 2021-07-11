@@ -56,6 +56,43 @@ namespace Web.Controllers
             //Lista de autores
             return View();
         }
+        public ActionResult Editar(int? id)
+        {
+            ServiceProveedor _ServiceProveedor = new ServiceProveedor();
+            Proveedor proveedor = null;
+
+            try
+            {
+                // Si va null
+                if (id == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                proveedor = _ServiceProveedor.GetProveedorByID(id.Value);
+                if (proveedor == null)
+                {
+                    TempData["Message"] = "No existe el agente solicitado";
+                    TempData["Redirect"] = "Proveedor";
+                    TempData["Redirect-Action"] = "Index";
+                    //Redireccion a la captura del Error
+                    return RedirectToAction("Default", "Error");
+                }
+                //Lista de autores
+                //ViewBag.Proveedores = listaProveedores(agente.IdProveedor.Value);
+                return View(proveedor);
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "Agente";
+                TempData["Redirect-Action"] = "GetAgentes";
+                //Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
+        }
 
         public ActionResult Save(Proveedor proveedor)
         {
@@ -82,7 +119,6 @@ namespace Web.Controllers
                 TempData["Redirect"] = "Proveedor";
                 TempData["Redirect-Action"] = "GetProveedores";
                 // Redireccion a la captura del Error
-                Console.WriteLine("ERRORRRRRRRRRRRRR");
                 return RedirectToAction("");
             }
         }

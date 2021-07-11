@@ -48,9 +48,8 @@
         @Html.DisplayFor(modelItem => item.Estado)
     </td>
     <td class="text-center">
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Detalle", "GetAgentesByID", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
     </td>
 </tr>            }
 
