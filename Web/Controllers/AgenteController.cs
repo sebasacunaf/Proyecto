@@ -28,7 +28,7 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Editar(int? id)
+        public ActionResult EditarAgente(int? id)
         {
             ServiceAgente _ServiceAgente = new ServiceAgente();
             Agente agente = null;
