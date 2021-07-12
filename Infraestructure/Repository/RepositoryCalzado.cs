@@ -146,73 +146,81 @@ namespace Infraestructure.Repository
             Calzado ocalzado = null;
             using (MyContext ctx = new MyContext())
             {
-                ctx.Configuration.LazyLoadingEnabled = false;
-                ocalzado = GetCalzadoByID((int)calzado.Id);
-                IRepositoryProveedor repoPro = new RepositoryProveedor();
-                if (ocalzado == null)
+                using (var transaccion = ctx.Database.BeginTransaction())
                 {
-                    //Insertar
-                   
-                    if (calzadoxSucursales != null)
+                    ctx.Configuration.LazyLoadingEnabled = false;
+                    ocalzado = GetCalzadoByID((int)calzado.Id);
+                    IRepositoryProveedor repoPro = new RepositoryProveedor();
+                    if (ocalzado == null)
                     {
-                        calzado.CalzadoxSucursal = new List<CalzadoxSucursal>();
-                        foreach (var calzadoxSucursal in calzadoxSucursales)
+                        if (calzadoxSucursales != null)
                         {
-                            CalzadoxSucursal CxSToAdd = new CalzadoxSucursal();
-                            CxSToAdd.Cantidad = 0;
-                            CxSToAdd.IdCalzado = calzado.Id;
-                            CxSToAdd.IdSucursal = calzadoxSucursal;
-                            ctx.CalzadoxSucursal.Attach(CxSToAdd); //sin esto, EF intentará crear una categoría
-                            calzado.CalzadoxSucursal.Add(CxSToAdd); // asociar a la categoría existente con el libro
-                        }
-                    }
-                    if (proveedores != null)
-                    {
-                        calzado.Proveedor = new List<Proveedor>();
-                        foreach (var proveedor in proveedores)
-                        {
-                            Proveedor ProToAdd = repoPro.GetProveedorByID(int.Parse(proveedor));
-                            ctx.Proveedor.Attach(ProToAdd); //sin esto, EF intentará crear una categoría
-                            calzado.Proveedor.Add(ProToAdd); // asociar a la categoría existente con el libro
-                        }
-                    }
-                    ctx.Calzado.Add(calzado);
-                    retorno = ctx.SaveChanges();
-                }
-                else
-                {
-                    //Actualizar Libro
-                    ctx.Calzado.Add(calzado);
-                    ctx.Entry(calzado).State = EntityState.Modified;
-                    retorno = ctx.SaveChanges();
-                    //Actualizar CalzadoxSucursal
-                    var selectedCalzadoxSucursalesID = new HashSet<string>(calzadoxSucursales);
-                    if (calzadoxSucursales != null)
-                    {
-                        ctx.Entry(calzado).Collection(p => p.CalzadoxSucursal).Load();
-                        var newCxSForCalzado = ctx.CalzadoxSucursal.Where(x => selectedCalzadoxSucursalesID.Contains(x.IdSucursal)).ToList();
-                        calzado.CalzadoxSucursal = newCxSForCalzado;
 
+                            calzado.CalzadoxSucursal = new List<CalzadoxSucursal>();
+
+                            foreach (var calzadoxSucursal in calzadoxSucursales)
+                            {
+                                CalzadoxSucursal CxSToAdd = new CalzadoxSucursal();
+                                CxSToAdd.Cantidad = 0;
+                                CxSToAdd.IdCalzado = calzado.Id;
+                                CxSToAdd.IdSucursal = calzadoxSucursal;
+                                ctx.CalzadoxSucursal.Attach(CxSToAdd); //sin esto, EF intentará crear una categoría
+                                calzado.CalzadoxSucursal.Add(CxSToAdd); // asociar a la categoría existente con el libro
+                                retorno = ctx.SaveChanges();
+                            }
+                        }
+                        if (proveedores != null)
+                        {
+                            calzado.Proveedor = new List<Proveedor>();
+                            foreach (var proveedor in proveedores)
+                            {
+                                Proveedor ProToAdd = repoPro.GetProveedorByID(int.Parse(proveedor));
+                                ctx.Proveedor.Attach(ProToAdd); //sin esto, EF intentará crear una categoría
+                                calzado.Proveedor.Add(ProToAdd); // asociar a la categoría existente con el libro
+                                retorno = ctx.SaveChanges();
+                            }
+                        }
+                        ctx.Calzado.Add(calzado);
+                        retorno = ctx.SaveChanges();
+                        transaccion.Commit();
+
+                    }
+
+                    else
+                    {
+                        //Actualizar Libro
+                        ctx.Calzado.Add(calzado);
                         ctx.Entry(calzado).State = EntityState.Modified;
                         retorno = ctx.SaveChanges();
-                    }
-                    var selectedProveedoresID = new HashSet<string>(proveedores);
-                    if (proveedores != null)
-                    {
-                        ctx.Entry(calzado).Collection(p => p.Proveedor).Load();
-                        var newProForCalzado = ctx.Proveedor.Where(x => selectedProveedoresID.Contains(x.Id.ToString())).ToList();
-                        calzado.Proveedor = newProForCalzado;
+                        //Actualizar CalzadoxSucursal
+                        var selectedCalzadoxSucursalesID = new HashSet<string>(calzadoxSucursales);
+                        if (calzadoxSucursales != null)
+                        {
+                            ctx.Entry(calzado).Collection(p => p.CalzadoxSucursal).Load();
+                            var newCxSForCalzado = ctx.CalzadoxSucursal.Where(x => selectedCalzadoxSucursalesID.Contains(x.IdSucursal)).ToList();
+                            calzado.CalzadoxSucursal = newCxSForCalzado;
 
-                        ctx.Entry(calzado).State = EntityState.Modified;
-                        retorno = ctx.SaveChanges();
+                            ctx.Entry(calzado).State = EntityState.Modified;
+                            retorno = ctx.SaveChanges();
+                        }
+                        var selectedProveedoresID = new HashSet<string>(proveedores);
+                        if (proveedores != null)
+                        {
+                            ctx.Entry(calzado).Collection(p => p.Proveedor).Load();
+                            var newProForCalzado = ctx.Proveedor.Where(x => selectedProveedoresID.Contains(x.Id.ToString())).ToList();
+                            calzado.Proveedor = newProForCalzado;
+
+                            ctx.Entry(calzado).State = EntityState.Modified;
+                            retorno = ctx.SaveChanges();
+                        }
                     }
                 }
+
+                if (retorno >= 0)
+                    ocalzado = GetCalzadoByID(calzado.Id);
+
+                return ocalzado;
             }
-
-            if (retorno >= 0)
-                ocalzado = GetCalzadoByID(calzado.Id);
-
-            return ocalzado;
         }
     }
 }

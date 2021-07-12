@@ -26,7 +26,6 @@ namespace Infraestructure.Repository
         {
             try
             {
-
                 IEnumerable<TipoMarca> lista = null;
                 using (MyContext ctx = new MyContext())
                 {

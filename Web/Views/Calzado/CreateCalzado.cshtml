@@ -70,10 +70,9 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.NombreMarca, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.TipoMarca, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.DropDownListFor(model => model.NombreMarca,
-    (SelectList)ViewBag.Marca,
+            @Html.DropDownListFor(model => model.NombreMarca, (SelectList)ViewBag.Marca,
     "Seleccione una Marca",
     htmlAttributes: new { @class = "form-control form-control-sm" })
             @Html.ValidationMessageFor(model => model.NombreMarca, "", new { @class = "text-danger" })
@@ -82,21 +81,21 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TipoGenero, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.DropDownListFor(model => model.TipoGenero,
+            @Html.DropDownListFor(model => model.IdGenero,
     (SelectList)ViewBag.TipoGenero,
     "Seleccione el Género",
     htmlAttributes: new { @class = "form-control form-control-sm" })
-            @Html.ValidationMessageFor(model => model.TipoGenero, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.IdGenero, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Tallas, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.DropDownListFor(model => model.Tallas,
+            @Html.DropDownListFor(model => model.IdTalla,
     (SelectList)ViewBag.Tallas,
     "Seleccione una Talla",
     htmlAttributes: new { @class = "form-control form-control-sm" })
-            @Html.ValidationMessageFor(model => model.Tallas, "", new { @class = "text-danger" })
+            @Html.ValidationMessageFor(model => model.IdTalla, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">

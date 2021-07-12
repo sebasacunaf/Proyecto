@@ -12,21 +12,23 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Cédula")]
             public int Id { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         public string Nombre { get; set; }
 
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [StringLength(8, ErrorMessage = "{0} no tiene formato válido")]
         [Display(Name = "Teléfono")]
             public string Telefono { get; set; }
-
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [EmailAddress(ErrorMessage = "Dirección de correo electrónico inválida")]
         [Display(Name = "Correo")]
             public string Correo { get; set; }
 
-
-            [Display(Name = "Proveedor")]
+        [Required(ErrorMessage = "{0} es un dato requerido")]
+        [Display(Name = "Proveedor")]
             public Nullable<int> IdProveedor { get; set; }
-
-            [Display(Name = "Estado")]
+        [Required(ErrorMessage = "{0} es un dato requerido")]
+        [Display(Name = "Estado")]
             public int Estado { get; set; }
         }
     internal partial class GestiónMetaData
@@ -66,30 +68,40 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Código")]
         public int Id { get; set; }
+       [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Marca")]
         public string NombreMarca { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Género")]
         public string IdGenero { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Talla")]
         public Nullable<int> IdTalla { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Precio Proveedor")]
         public Nullable<decimal> PrecioProv { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Precio de Venta")]
         public Nullable<decimal> PrecioVent { get; set; }
 
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Cantidad Mínima")]
         public Nullable<int> CantMin { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Cantidad Máxima")]
         public Nullable<int> CantMax { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Cantidad Total")]
         public Nullable<int> CantTotal { get; set; }
         public byte[] Foto { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
-
+        //[Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Tipo Género")]
         public virtual TipoGenero TipoGenero { get; set; }
 
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Sucursales")]
         public virtual ICollection<CalzadoxSucursal> CalzadoxSucursal { get; set; }
     }
@@ -107,11 +119,15 @@ namespace Infraestructure.Models
         [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Código")]
         public int Id { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Ubicación")]
         public string Ubicacion { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "País")]
         public string Pais { get; set; }
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         public string Estado { get; set; }
 
     }

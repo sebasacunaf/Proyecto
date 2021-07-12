@@ -103,13 +103,13 @@ namespace Web.Controllers
         //    //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
         //    return new SelectList(listaCategoria, "Id", "Categoria");
         //}
-        private SelectList listaMarcas()
+        private SelectList listaMarcas(string Nombre ="")
         {
             //Lista de autores
             IServiceTipoMarca _ServiceTipoMarca = new ServiceTipoMarca();
             IEnumerable<TipoMarca> listaMarca = _ServiceTipoMarca.GetTipoMarcas();
             //SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
-            return new SelectList(listaMarca, "Nombre", "Nombre");
+            return new SelectList(listaMarca, "Nombre", "Nombre", Nombre);
         }
         private MultiSelectList listaSucursales(ICollection<Sucursal> sucursales)
         {
@@ -142,6 +142,7 @@ namespace Web.Controllers
             ViewBag.Sucursal = listaSucursales(null);
             return View();
         }
+        [HttpPost]
         public ActionResult Save(Calzado calzado, string[] calzadoxSucursales,string[] proveedores )
         {
             IServiceCalzado _ServiceCalzado = new ServiceCalzado();
@@ -154,6 +155,11 @@ namespace Web.Controllers
                 else
                 {
                     Util.Util.ValidateErrors(this);
+                    ViewBag.Marca = listaMarcas();
+                    ViewBag.TipoGenero = listaGenero();
+                    ViewBag.Proveedores = listaProveedores();
+                    ViewBag.Tallas = listaTallas();
+                    ViewBag.Sucursal = listaSucursales(null);
                     return View("CreateCalzado", calzado);
                 }
 
