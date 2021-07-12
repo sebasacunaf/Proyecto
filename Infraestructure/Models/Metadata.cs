@@ -86,6 +86,12 @@ namespace Infraestructure.Models
         public byte[] Foto { get; set; }
         [Display(Name = "Descripción")]
         public string Descripcion { get; set; }
+
+        [Display(Name = "Tipo Género")]
+        public virtual TipoGenero TipoGenero { get; set; }
+
+        [Display(Name = "Sucursales")]
+        public virtual ICollection<CalzadoxSucursal> CalzadoxSucursal { get; set; }
     }
     internal partial class CalzadoxSucursalMetaData
     {
