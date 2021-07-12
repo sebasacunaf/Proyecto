@@ -108,7 +108,7 @@ namespace Web.Controllers
             //Lista de autores
             IServiceTipoMarca _ServiceTipoMarca = new ServiceTipoMarca();
             IEnumerable<TipoMarca> listaMarca = _ServiceTipoMarca.GetTipoMarcas();
-            //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+            //SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
             return new SelectList(listaMarca, "Nombre", "Nombre");
         }
         private MultiSelectList listaSucursales(ICollection<Sucursal> sucursales)
@@ -124,24 +124,32 @@ namespace Web.Controllers
             }
             return new MultiSelectList(listaSucursales, "Id", "Id", listaSucursalesSelect);
         }
+        private SelectList listaProveedores()
+        {
+            //Lista de autores
+            IServiceProveedor _ServiceProveedor = new ServiceProveedor();
+            IEnumerable<Proveedor> listaProveedor = _ServiceProveedor.GetProveedores();
+            //Autor SelectAutor = listaAutores.Where(c => c.IdAutor == idAutor).FirstOrDefault();
+            return new SelectList(listaProveedor, "Id", "Nombre");
+        }
         public ActionResult CreateCalzado()
         {
             //Lista de autores
             ViewBag.Marca = listaMarcas();
             ViewBag.TipoGenero = listaGenero();
-            //ViewBag.Categoria = listaCategoria();
+            ViewBag.Proveedores = listaProveedores();
             ViewBag.Tallas = listaTallas();
             ViewBag.Sucursal = listaSucursales(null);
             return View();
         }
-        public ActionResult Save(Calzado calzado, TipoGenero tipoGenero,Tallas tallas, TipoMarca tipoMarca, CalzadoxSucursal[] calzadoxSucursal, Proveedor[] proveedores )
+        public ActionResult Save(Calzado calzado, string[] calzadoxSucursales,string[] proveedores )
         {
             IServiceCalzado _ServiceCalzado = new ServiceCalzado();
             try
             {
                 if (ModelState.IsValid)
                 {
-                    Calzado oCalzado = _ServiceCalzado.Save(calzado, tipoGenero, tallas, tipoMarca, calzadoxSucursal, proveedores);
+                    Calzado oCalzado = _ServiceCalzado.Save(calzado, calzadoxSucursales, proveedores);
                 }
                 else
                 {

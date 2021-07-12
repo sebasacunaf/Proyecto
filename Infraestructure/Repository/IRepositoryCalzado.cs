@@ -14,6 +14,6 @@ namespace Infraestructure.Repository
         IEnumerable<Calzado> GetCalzadosByMarca(String marca);
         IEnumerable<Calzado> GetCalzadosByGenero(String genero);
         IEnumerable<Calzado> GetCalzadosByTalla(int talla);
-        Calzado Save(Calzado calzado, TipoGenero tipoGenero, Tallas tallas, TipoMarca tipoMarca, CalzadoxSucursal[] calzadoxSucursals, Proveedor[] proveedores);
+        Calzado Save(Calzado calzado, string[] calzadoxSucursales, string[] proveedores);
     }
 }
