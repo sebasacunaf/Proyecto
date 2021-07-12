@@ -9,15 +9,19 @@ namespace Infraestructure.Models
 {
         internal partial class AgenteMetaData
         {
-            [Display(Name = "Cédula")]
+        [Required(ErrorMessage = "{0} es un dato requerido")]
+        [Display(Name = "Cédula")]
             public int Id { get; set; }
         public string Nombre { get; set; }
 
-            [Display(Name = "Teléfono")]
+        [StringLength(8, ErrorMessage = "{0} no tiene formato válido")]
+        [Display(Name = "Teléfono")]
             public string Telefono { get; set; }
 
-            [Display(Name = "Correo")]
+        [EmailAddress(ErrorMessage = "Dirección de correo electrónico inválida")]
+        [Display(Name = "Correo")]
             public string Correo { get; set; }
+
 
             [Display(Name = "Proveedor")]
             public Nullable<int> IdProveedor { get; set; }
@@ -59,6 +63,7 @@ namespace Infraestructure.Models
     }
     internal partial class CalzadoMetaData
     {
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Código")]
         public int Id { get; set; }
         [Display(Name = "Marca")]
@@ -93,6 +98,7 @@ namespace Infraestructure.Models
 
     internal partial class ProveedorMetaData
     {
+        [Required(ErrorMessage = "{0} es un dato requerido")]
         [Display(Name = "Código")]
         public int Id { get; set; }
         public string Nombre { get; set; }
