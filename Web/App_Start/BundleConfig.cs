@@ -10,9 +10,20 @@ namespace Web
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
+            //Jqueryui
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+                      "~/Scripts/jquery-ui.js"
+                      ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
+
+            // SweetAlert
+            bundles.Add(new ScriptBundle("~/bundles/sweetalert").Include("~/Scripts/sweetalert.min.js"));
+
+            //jQuery.Unobtrusive
+            bundles.Add(new ScriptBundle("~/bundles/jqueryajax").Include(
+                       "~/Scripts/jquery.unobtrusive*"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información. De este modo, estará
             // para la producción, use la herramienta de compilación disponible en https://modernizr.com para seleccionar solo las pruebas que necesite.
@@ -28,6 +39,7 @@ namespace Web
                          "~/Content/font-awesome.min.css",
                           "~/Content/Logout.css",
                            "~/Content/Details.css",
+                             "~/Content/jquery-ui.css", "~/Content/sweetalert.css",
              "~/Content/bootstrap-flatly.min.css"));
             // "~/Content/site.css"
         }

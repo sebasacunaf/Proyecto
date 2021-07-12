@@ -1,3 +1,4 @@
+using Infraestructure.Utils;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,11 +23,13 @@ namespace Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
-        //protected void Application_Error()
-       // {
-          //  var ex = Server.GetLastError();
-          //  Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod());
-       // }
+  
+        protected void Application_Error()
+        {
+            var ex = Server.GetLastError();
+
+            Log.Error(ex, System.Reflection.MethodBase.GetCurrentMethod());
+        }
         protected void Application_BeginRequest(Object sender, EventArgs e)
         {
             //Configurar

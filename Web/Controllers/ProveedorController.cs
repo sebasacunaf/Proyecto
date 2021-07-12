@@ -13,6 +13,25 @@ namespace Web.Controllers
     public class ProveedorController : Controller
     {
         // GET: Proveedor
+        public ActionResult buscarProveedorxNombre(string filtro)
+        {
+            IEnumerable<Proveedor> lista = null;
+            IServiceProveedor _ServicePro = new ServiceProveedor();
+
+            // Error porque viene en blanco 
+            if (string.IsNullOrEmpty(filtro))
+            {
+                lista = _ServicePro.GetProveedores();
+            }
+            else
+            {
+                lista = _ServicePro.GetProveedorByNombre(filtro);
+            }
+
+
+            // Retorna un Partial View
+            return PartialView("_PartialViewProveedores", lista);
+        }
         public ActionResult GetProveedores()
         {
             IEnumerable<Proveedor> lista = null;
@@ -72,9 +91,9 @@ namespace Web.Controllers
                 proveedor = _ServiceProveedor.GetProveedorByID(id.Value);
                 if (proveedor == null)
                 {
-                    TempData["Message"] = "No existe el agente solicitado";
+                    TempData["Message"] = "No existe el proveedor solicitado";
                     TempData["Redirect"] = "Proveedor";
-                    TempData["Redirect-Action"] = "Index";
+                    TempData["Redirect-Action"] = "GetProveedores";
                     //Redireccion a la captura del Error
                     return RedirectToAction("Default", "Error");
                 }
@@ -87,8 +106,8 @@ namespace Web.Controllers
                 // Salvar el error en un archivo 
                 Log.Error(ex, MethodBase.GetCurrentMethod());
                 TempData["Message"] = "Error al procesar los datos! " + ex.Message;
-                TempData["Redirect"] = "Agente";
-                TempData["Redirect-Action"] = "GetAgentes";
+                TempData["Redirect"] = "Proveedor";
+                TempData["Redirect-Action"] = "GetProveedores";
                 //Redireccion a la captura del Error
                 return RedirectToAction("Default", "Error");
             }

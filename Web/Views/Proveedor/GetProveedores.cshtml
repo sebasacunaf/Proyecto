@@ -3,50 +3,79 @@
 @{
     ViewBag.Title = "Proveedores";
 }
+@*<div class="col-md-4">
+    <div class="card my-4">
+        <h5 class="card-header">Buscar proveedor por nombre</h5>
+        @using (Ajax.BeginForm("buscarProveedorxNombre", "Proveedor", new AjaxOptions
+        {
+            UpdateTargetId = "resultado",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "GET",
+            LoadingElementId = "ajaxLoader"
+        }))
+        {
+            <div class="card-body">
+                <div class="input-group">
+                    @Html.TextBox("filtro", "", new { @class = "form-control", @placeholder = "Nombre Proveedor" })
 
+                    <button type="submit" class="btn btn-link">Buscar</button>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>*@
 
 <section class="bg-light py-5" style="margin-top:5%">
     <center>
-        <h4  style="color: #900C3F ">Proveedores</h4>
+        <h4 style="color: #900C3F ">Proveedores</h4>
         <br />
         <table class="table table-hover">
-            <tr class="table-light">
-                <th  scope="col" class="text-center">
-                    @Html.DisplayNameFor(model => model.Nombre)
-                </th>
-                <th  scope="col" class="text-center">
-                    @Html.DisplayNameFor(model => model.Ubicacion)
-                </th>
-                <th  scope="col" class="text-center">
-                    @Html.DisplayNameFor(model => model.Pais)
-                </th>
-                <th  scope="col" class="text-center">
-                    @Html.DisplayNameFor(model => model.Estado)
-                </th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
+            <thead>
                 <tr class="table-light">
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Nombre)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Ubicacion)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Pais)
-                    </td>
-                    <td class="text-center">
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>
-                    <td class="text-center">
-                        @Html.ActionLink("Detalle", "GetProveedorByID", new { id = item.Id }) |
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
-                    </td>
+                    <th scope="col" class="text-center">
+                        @Html.DisplayNameFor(model => model.Nombre)
+                    </th>
+                    <th scope="col" class="text-center">
+                        @Html.DisplayNameFor(model => model.Ubicacion)
+                    </th>
+                    <th scope="col" class="text-center">
+                        @Html.DisplayNameFor(model => model.Pais)
+                    </th>
+                    <th scope="col" class="text-center">
+                        @Html.DisplayNameFor(model => model.Estado)
+                    </th>
                 </tr>
-            }
-
+            </thead>
+            <tbody id="resultado">
+                @foreach (var item in Model)
+                {
+                    <tr class="table-light">
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Ubicacion)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Pais)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>
+                        <td class="text-center">
+                            @Html.ActionLink("Detalle", "GetProveedorByID", new { id = item.Id }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
+
     </center>
+
+
 </section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryajax")}

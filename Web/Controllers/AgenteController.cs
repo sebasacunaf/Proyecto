@@ -45,7 +45,7 @@ namespace Web.Controllers
                 {
                     TempData["Message"] = "No existe el agente solicitado";
                     TempData["Redirect"] = "Agente";
-                    TempData["Redirect-Action"] = "Index";
+                    TempData["Redirect-Action"] = "GetAgentes";
                     //Redireccion a la captura del Error
                     return RedirectToAction("Default", "Error");
                 }

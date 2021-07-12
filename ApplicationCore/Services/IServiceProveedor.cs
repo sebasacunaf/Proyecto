@@ -9,6 +9,8 @@ namespace ApplicationCore.Services
 {
    public  interface IServiceProveedor
     {
+        IEnumerable<Proveedor> GetProveedorByNombre(String nombre);
+        IEnumerable<Proveedor> GetProveedor();
         IEnumerable<Proveedor> GetProveedores();
         Proveedor GetProveedorByID(int id);
         Proveedor Save(Proveedor proveedor);

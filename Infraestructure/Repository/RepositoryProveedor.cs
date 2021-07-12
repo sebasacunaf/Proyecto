@@ -12,7 +12,27 @@ namespace Infraestructure.Repository
 {
     public class RepositoryProveedor : IRepositoryProveedor
     {
-
+        public IEnumerable<Proveedor> GetProveedorByNombre(string nombre)
+        {
+            IEnumerable<Proveedor> lista = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                lista = ctx.Proveedor.ToList().
+                    FindAll(l => l.Nombre.ToLower().Contains(nombre.ToLower()));
+            }
+            return lista;
+        }
+        public IEnumerable<Proveedor> GetProveedor()
+        {
+            IEnumerable<Proveedor> lista = null;
+            using (MyContext ctx = new MyContext())
+            {
+                ctx.Configuration.LazyLoadingEnabled = false;
+                lista = ctx.Proveedor.Include(x => x.Agente).ToList();
+            }
+            return lista;
+        }
 
         public Proveedor GetProveedorByID(int id)
         {

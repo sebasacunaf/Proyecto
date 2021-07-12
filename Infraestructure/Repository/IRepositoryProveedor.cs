@@ -9,6 +9,8 @@ namespace Infraestructure.Repository
 {
    public interface IRepositoryProveedor
     {
+        IEnumerable<Proveedor> GetProveedorByNombre(String nombre);
+        IEnumerable<Proveedor> GetProveedor();
         IEnumerable<Proveedor> GetProveedores();
         Proveedor GetProveedorByID(int id);
         Proveedor Save(Proveedor proveedor);

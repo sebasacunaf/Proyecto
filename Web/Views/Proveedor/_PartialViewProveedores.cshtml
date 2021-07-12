@@ -1,0 +1,23 @@
+﻿@model IEnumerable <Infraestructure.Models.Proveedor>
+
+@foreach (var item in Model)
+{
+    <tr class="table-light">
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Ubicacion)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Pais)
+        </td>
+        <td class="text-center">
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+        <td class="text-center">
+            @Html.ActionLink("Detalle", "GetProveedorByID", new { id = item.Id }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}

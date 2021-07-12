@@ -80,7 +80,7 @@
                 <div class="logout">
                     <i class="fa fa-sign-out" aria-hidden="true" style="color: white;font-size: 20px"></i>
                 </div>
-                
+
 
             </form>
         </div>
@@ -90,9 +90,11 @@
             @RenderBody()
         </div>
     </main>
-    @RenderSection("footer",false)
+    @RenderSection("footer", false)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/sweetalert")
+    @Scripts.Render("~/bundles/jqueryui")
     @RenderSection("scripts", required: false)
 </body>
 </html>
