@@ -13,6 +13,48 @@ namespace Web.Controllers
 {
     public class CalzadoController : Controller
     {
+
+        public ActionResult Editar(int? id)
+        {
+            ServiceCalzado _ServiceCalzado = new ServiceCalzado();
+            Calzado calzado = null;
+
+            try
+            {
+                // Si va null
+                if (id == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                calzado = _ServiceCalzado.GetCalzadoByID(id.Value);
+                if (calzado == null)
+                {
+                    TempData["Message"] = "No existe el calzado solicitado";
+                    TempData["Redirect"] = "Calzado";
+                    TempData["Redirect-Action"] = "GetCalzados";
+                    //Redireccion a la captura del Error
+                    return RedirectToAction("Default", "Error");
+                }
+                //Lista de autores
+            ViewBag.Marca = listaMarcas(calzado.NombreMarca);
+            ViewBag.TipoGenero = listaGenero();
+            ViewBag.Proveedores = listaProveedores();
+            ViewBag.Tallas = listaTallas();
+            ViewBag.Sucursal = listaSucursales(null);
+                return View(calzado);
+            }
+            catch (Exception ex)
+            {
+                // Salvar el error en un archivo 
+                Log.Error(ex, MethodBase.GetCurrentMethod());
+                TempData["Message"] = "Error al procesar los datos! " + ex.Message;
+                TempData["Redirect"] = "Calzado";
+                TempData["Redirect-Action"] = "GetCalzados";
+                //Redireccion a la captura del Error
+                return RedirectToAction("Default", "Error");
+            }
+        }
         // GET: Calzado
         public ActionResult GetCalzados()
         {
